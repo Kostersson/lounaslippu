@@ -29,4 +29,5 @@ Projektin tarkoituksena on helpottaa lounaslippujen tilaamista.
    - Lasku tunnistetaan viitenumerolla
 - Maksujen tuonti pankkipalvelusta CSV:nä
  - *Kun liput maksettu, ne voi tulostaa järjestelmästä*
+- Käytettyjen lippujen kirjaaminen järjestelmään
 - Loki palvelussa tehdyistä operaatioista
