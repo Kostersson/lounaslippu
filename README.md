@@ -16,5 +16,17 @@ Projektin tarkoituksena on helpottaa lounaslippujen tilaamista.
 
 ### Projekti sisältää seuraavia ominaisuuksia
 
-1. Käyttäjän rekisteröityminen
-⋅⋅* Vain rekisteröitynyt käyttäjä voi tilata lippuja
+- Käyttäjän rekisteröityminen
+ - *Vain rekisteröitynyt käyttäjä voi tilata lippuja*
+- Käyttäjien muokkaus ja poistaminen
+ - *Käyttäjien roolitus*
+   - Normaali käyttäjä
+   - Ylläpitäjä
+- Lippujen ja laskujen generointi
+ - *Lippujen numeroilla seurataan lippujen käyttöä*
+ - *Käyttäjällä oikeus ostaa vain tietyn verran lippuja*
+ - *Laskun generointi ostettujen lippujen perusteella*
+   - Lasku tunnistetaan viitenumerolla
+- Maksujen tuonti pankkipalvelusta CSV:nä
+ - *Kun liput maksettu, ne voi tulostaa järjestelmästä*
+- Loki palvelussa tehdyistä operaatioista
