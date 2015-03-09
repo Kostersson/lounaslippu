@@ -20,8 +20,8 @@ Projektin tarkoituksena on helpottaa lounaslippujen tilaamista.
  - *Vain rekisteröitynyt käyttäjä voi tilata lippuja*
 - Käyttäjien muokkaus ja poistaminen
  - *Käyttäjien roolitus*
-   - Normaali käyttäjä
-   - Ylläpitäjä
+    - Normaali käyttäjä
+    - Ylläpitäjä
 - Lippujen ja laskujen generointi
  - *Lippujen numeroilla seurataan lippujen käyttöä*
  - *Käyttäjällä oikeus ostaa vain tietyn verran lippuja*
