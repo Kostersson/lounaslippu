@@ -12,7 +12,7 @@ HY-TKTL Aineopintojen harjoitustyö: Tietokantasovellus
 
 ## Työn aihe
 
-Ravintolassa saa opiskelijahintaista ruokaa etukäteen ostetuilla lounaslipuilla.
+Osakunnan ravintolassa saa opiskelijahintaista ruokaa etukäteen ostetuilla lounaslipuilla.
 Nykyään liput käydään erikseen ostamassa toimistosta tiettyinä kellonaikoina, maksukuittia vastaan.
 Projektin tarkoituksena on helpottaa lounaslippujen tilaamista.
 
@@ -23,7 +23,9 @@ Projektin tarkoituksena on helpottaa lounaslippujen tilaamista.
 - Käyttäjien muokkaus ja poistaminen
  - *Käyttäjien roolitus*
     - Normaali käyttäjä
+    - Rahastonhoitaja
     - Ylläpitäjä
+    - Pääylläpitäjä
 - Lippujen ja laskujen generointi
  - *Lippujen numeroilla seurataan lippujen käyttöä*
  - *Käyttäjällä oikeus ostaa vain tietyn verran lippuja*
