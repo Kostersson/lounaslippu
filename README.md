@@ -23,6 +23,7 @@ Projektin tarkoituksena on helpottaa lounaslippujen tilaamista.
 - Käyttäjien muokkaus ja poistaminen
  - *Käyttäjien roolitus*
     - Normaali käyttäjä
+    - Rahastonhoitaja
     - Ylläpitäjä
 - Lippujen ja laskujen generointi
  - *Lippujen numeroilla seurataan lippujen käyttöä*
