@@ -25,6 +25,7 @@ Projektin tarkoituksena on helpottaa lounaslippujen tilaamista.
     - Normaali käyttäjä
     - Rahastonhoitaja
     - Ylläpitäjä
+    - Pääylläpitäjä
 - Lippujen ja laskujen generointi
  - *Lippujen numeroilla seurataan lippujen käyttöä*
  - *Käyttäjällä oikeus ostaa vain tietyn verran lippuja*
