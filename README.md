@@ -9,6 +9,11 @@ HY-TKTL Aineopintojen harjoitustyö: Tietokantasovellus
 
 [Linkki sovellukseen](http://ppkostam.users.cs.helsinki.fi/lounaslippu/)
 
+### Sovelluksen näkymiä
+[Sisäänkirjautuminen](http://ppkostam.users.cs.helsinki.fi/lounaslippu/testinakymat/index.html)
+[Rekisteröityminen](http://ppkostam.users.cs.helsinki.fi/lounaslippu/testinakymat/rekisteroidy.html)
+[Muut olemassaolevat näkymät linkkiriviltä](http://ppkostam.users.cs.helsinki.fi/lounaslippu/testinakymat/omat_tiedot.html)
+
 
 ## Työn aihe
 
