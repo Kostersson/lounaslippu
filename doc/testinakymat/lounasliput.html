@@ -1,0 +1,134 @@
+<!doctype html>
+
+<html lang="fi-FI">
+
+<head>
+    <title>Lounaslippu</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        body {
+            padding-top: 50px;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Lounaslippu</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#">Etusivu</a>
+                </li>
+                <li>
+                    <a href="omat_tiedot.html">Omat tiedot</a>
+                </li>
+                <li class="active">
+                    <a href="lounasliput.html">Lounasliput</a>
+                </li>
+                <li>
+                    <a href="lippujen_tilaus.html">Lippujen tilaus</a>
+                </li>
+                <li>
+                    <a href="lippujen_syotto.html">Lippujen sy&ouml;tt&ouml;</a>
+                </li>
+                <li>
+                    <a href="maksujen_syotto.html">Maksujen sy&ouml;tt&ouml;</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hallinnointi <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#">Loki</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <button type="submit" class="btn btn-success">Kirjaudu ulos</button>
+            </form>
+        </div>
+        <!--/.navbar-collapse -->
+    </div>
+</div>
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <h1>Lounasliput</h1>
+    <div class="alert alert-dismissable alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>Voit ostaa viel&auml; <b>20</b>&nbsp;lippua.
+    </div>
+    <div class="alert alert-dismissable alert-info">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>Viimeisin maksujen tuonti tehty <b>22.3.2015 klo 15.45</b>
+    </div>
+    <h2>Kirjausta/ maksua odottavat liput</h2>
+    <table class="table table-hover table-bordered table-condensed">
+        <thead>
+        <tr>
+            <th>P&auml;iv&auml;m&auml;&auml;r&auml;</th>
+            <th>M&auml;&auml;r&auml;</th>
+            <th>Hinta</th>
+            <th>Viitenumero</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>22.3.2015 16:20</td>
+            <td>20 kpl</td>
+            <td>40€</td>
+            <td>123456789</td>
+        </tr>
+        </tbody>
+    </table>
+    <h2>Kirjatut maksut</h2>
+    <table class="table table-hover table-bordered table-condensed">
+        <thead>
+        <tr>
+            <th>P&auml;iv&auml;m&auml;&auml;r&auml;</th>
+            <th>M&auml;&auml;r&auml;</th>
+            <th>Hinta</th>
+            <th>Viitenumero</th>
+            <th>Kirjattu</th>
+            <th>Summa</th>
+            <th>Saldo</th>
+            <th>Lataa</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>21.3.2015</td>
+            <td>20 kpl</td>
+            <td>40€</td>
+            <td>123456789</td>
+            <td>21.3.2015 16:20</td>
+            <td>20€</td>
+            <td>0€</td>
+            <td><a href="#">Lataa</a></td>
+        </tr><tr>
+            <td>20.3.2015</td>
+            <td>20 kpl</td>
+            <td>40€</td>
+            <td>123456789</td>
+            <td>21.3.2015 16:20</td>
+            <td>20€</td>
+            <td>-20€</td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!-- /container -->
+</body>
+
+</html>
