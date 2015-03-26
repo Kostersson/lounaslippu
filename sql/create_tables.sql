@@ -9,7 +9,7 @@ CREATE TABLE "users" (
 	PRIMARY KEY ("id")
 );
 
-CREATE TABLE public "roles"
+CREATE TABLE "roles"
 (
    id serial, 
    name text, 
