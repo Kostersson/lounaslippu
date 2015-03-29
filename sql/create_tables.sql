@@ -87,3 +87,17 @@ CREATE TABLE "log"
    CONSTRAINT id PRIMARY KEY (id), 
    CONSTRAINT "user" FOREIGN KEY (user_id) REFERENCES users (id) ON UPDATE NO ACTION ON DELETE NO ACTION
 ) ;
+
+-- FUNKTIOT
+CREATE OR REPLACE FUNCTION update_user_modified_column()
+RETURNS TRIGGER AS $$
+BEGIN
+   NEW.modified = now(); 
+   RETURN NEW;
+END;
+$$ language 'plpgsql';
+
+-- TRIGGERIT
+CREATE TRIGGER update_user BEFORE UPDATE
+   ON users FOR EACH ROW
+   EXECUTE PROCEDURE public.update_user_modified_column();
