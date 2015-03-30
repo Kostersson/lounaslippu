@@ -6,7 +6,20 @@ use Tsoha\BaseController;
 
 class LoginController extends BaseController{
 
+    private $authenticationService;
+
+    function __construct($authenticationService)
+    {
+        $this->authenticationService = $authenticationService;
+    }
+
+
     public static function index(){
+        // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
+        View::make('login.html');
+    }
+
+    public static function login(){
         // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
         View::make('login.html');
     }

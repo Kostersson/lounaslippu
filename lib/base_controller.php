@@ -1,5 +1,8 @@
 <?php
 namespace Tsoha;
+
+use Lounaslippu\Service\AuthenticationService;
+
   class BaseController{
 
     public static function get_user_logged_in(){
