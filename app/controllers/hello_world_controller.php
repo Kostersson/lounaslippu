@@ -2,6 +2,7 @@
 namespace Lounaslippu\Controller;
 
 use Tsoha\View;
+use Tsoha\BaseController;
 
 class HelloWorldController extends BaseController{
 

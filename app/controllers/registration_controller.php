@@ -2,6 +2,8 @@
 namespace Lounaslippu\Controller;
 
 use Tsoha\View;
+use Tsoha\BaseController;
+
   class RegistrationController extends BaseController{
 
     public static function index(){
