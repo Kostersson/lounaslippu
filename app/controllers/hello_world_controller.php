@@ -1,4 +1,7 @@
 <?php
+namespace Lounaslippu\Controller;
+
+use Tsoha\View;
 
 class HelloWorldController extends BaseController{
 

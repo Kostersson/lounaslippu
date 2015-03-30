@@ -1,5 +1,7 @@
 <?php
+namespace Lounaslippu\Controller;
 
+use Tsoha\View;
   class RegistrationController extends BaseController{
 
     public static function index(){

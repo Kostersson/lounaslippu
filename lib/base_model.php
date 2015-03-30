@@ -1,5 +1,5 @@
 <?php
-
+namespace Tsoha;
   class BaseModel{
     // "protected"-attribuutti on käytössä vain luokan ja sen perivien luokkien sisällä
     protected $validators;

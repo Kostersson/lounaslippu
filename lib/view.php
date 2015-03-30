@@ -1,5 +1,5 @@
 <?php
-
+namespace Tsoha;
   class View{
 
     public static function make($view, $content = array()){

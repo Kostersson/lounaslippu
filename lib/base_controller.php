@@ -1,5 +1,5 @@
 <?php
-
+namespace Tsoha;
   class BaseController{
 
     public static function get_user_logged_in(){

@@ -1,5 +1,5 @@
 <?php
-
+namespace Tsoha;
   class DB{
 
       public static function connection(){

@@ -1,5 +1,5 @@
 <?php
-
+namespace Tsoha;
   class Redirect{
 
     public static function to($path, $message = null){
