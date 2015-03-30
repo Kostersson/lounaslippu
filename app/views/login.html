@@ -7,7 +7,7 @@
 
         <title>
             {% block title %}
-            Tietokantasovellus
+            Lounaslippu
             {% endblock %}
         </title>
 
@@ -65,7 +65,7 @@
     <body>
         <div class="container">
 
-            <form class="form-signin" action="#" name="login" method="post">
+            <form class="form-signin" action="{{base_path}}/sisaankirjautuminen" name="login" method="post">
                 <h2 class="form-signin-heading">Lounaslippu</h2>
                 <input type="text" class="form-control" placeholder="Sähköposti">
                 <input type="password" class="form-control" placeholder="Salasana">
