@@ -1,5 +1,6 @@
 <?php
-
+use Lounaslippu\Controller\HelloWorldController;
+use Lounaslippu\Controller\RegistrationController;
 use Lounaslippu\Controller\LoginController;
 
 $routes->get('/', function() {
