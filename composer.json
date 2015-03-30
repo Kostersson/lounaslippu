@@ -1,19 +1,19 @@
 {
-	"autoload": {
-		"classmap": [
-			"config/database.php",
-			"lib",
-			"app/controllers",
-            "app/services"
-		]
-	},
-	"require": {
-		"slim/slim": "2.*",
-		"twig/twig": "~1.5",
-		"raveren/kint": "v0.9",
-        "symfony/dependency-injection": "2.*",
-        "symfony/yaml": "2.*",
-        "symfony/config": "2.*"
+  "autoload": {
+    "classmap": [
+      "config/database.php",
+      "lib",
+      "app/controllers",
+      "app/services"
+    ]
+  },
+  "require": {
+    "slim/slim": "2.*",
+    "twig/twig": "~1.5",
+    "raveren/kint": "v0.9",
+    "symfony/dependency-injection": "2.*",
+    "symfony/yaml": "2.*",
+    "symfony/config": "2.*"
 
-	}
+  }
 }
