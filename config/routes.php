@@ -7,6 +7,9 @@ $routes->get('/', function() {
 $routes->get('/rekisteroityminen', function() {
     RegistrationController::index();
 });
+$routes->get('/sisaankirjautuminen', function() {
+    LoginController::index();
+});
 
 $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
