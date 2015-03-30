@@ -11,9 +11,11 @@
     "slim/slim": "2.*",
     "twig/twig": "~1.5",
     "raveren/kint": "v0.9",
-    "symfony/dependency-injection": "2.*",
-    "symfony/yaml": "2.*",
-    "symfony/config": "2.*"
-
+    "symfony/dependency-injection": "2.6.*",
+    "symfony/yaml": "2.6.*",
+    "symfony/config": "2.6.*",
+    "symfony/routing": "2.6.*"
+    "symfony/http-foundation": "2.6.*"
+    "symfony/class-loader": "2.6.*"
   }
 }

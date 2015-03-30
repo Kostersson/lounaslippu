@@ -1,6 +1,7 @@
 <?php
 namespace Lounaslippu\Controller;
 
+use Lounaslippu\Service\AuthenticationService;
 use Tsoha\View;
 use Tsoha\BaseController;
 
@@ -8,7 +9,7 @@ class LoginController extends BaseController{
 
     private $authenticationService;
 
-    function __construct($authenticationService)
+    function __construct(AuthenticationService $authenticationService)
     {
         $this->authenticationService = $authenticationService;
     }
@@ -21,6 +22,7 @@ class LoginController extends BaseController{
 
     public static function login(){
         // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
+        self::authenticationService->signIn("jaakko", "pekka");
         View::make('login.html');
     }
 
