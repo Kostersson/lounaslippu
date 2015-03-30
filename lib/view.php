@@ -20,7 +20,7 @@ namespace Tsoha;
 
         // Tulostetaan Twig:n renderöimä näkymä
         echo $twig->render($view, $content);
-      } catch (Exception $e){
+      } catch (\Exception $e){
         die('Virhe näkymän näyttämisessä: ' . $e->getMessage());
       }
 
@@ -28,11 +28,11 @@ namespace Tsoha;
     }
 
     private static function get_twig(){
-      Twig_Autoloader::register();
+      \Twig_Autoloader::register();
 
-      $twig_loader = new Twig_Loader_Filesystem('app/views');
+      $twig_loader = new \Twig_Loader_Filesystem('app/views');
 
-      return new Twig_Environment($twig_loader);
+      return new \Twig_Environment($twig_loader);
     }
 
     private static function set_flash_message(&$content){
