@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fi-FI">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>
+        {% block title %}
+        Tietokantasovellus
+        {% endblock %}
+    </title>
+
+    {% block head %}
+    <!-- Bootstrap (tyylitiedosto) -->
+    <link href="{{base_path}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Oma tyylitiedostomme -->
+    <link href="{{base_path}}/assets/css/site.css" rel="stylesheet">
+    {% endblock %}
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+
+            <a class="navbar-brand" href="#">Lounaslippu</a>
+        </div>
+
+        </div>
+        <!--/.navbar-collapse -->
+    </div>
+</div>
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <h1>Rekisteröityminen</h1>
+    <form action="#" name="registration" method="post">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label">Nimi</label>
+                    <div class="controls">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label">S&auml;hk&ouml;postiosoite</label>
+                    <div class="controls">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label">Salasana</label>
+                    <div class="controls">
+                        <input type="password" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label">Salasana uudelleen</label>
+                    <div class="controls">
+                        <input type="password" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Rekisteröidy</button>
+    </form>
+</div>
+<!-- /container -->
+</body>
+
+</html>
