@@ -1,6 +1,6 @@
 <?php
 
-use Lounaslippu\Controller;
+use Lounaslippu\Controller\LoginController;
 
 $routes->get('/', function() {
     HelloWorldController::index();
