@@ -34,48 +34,59 @@
 </div>
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
-    <h1>Rekisteröityminen</h1>
-    <form action="#" name="registration" method="post">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label">Nimi</label>
-                    <div class="controls">
-                        <input type="text" class="form-control">
+    <div class="container">
+        <h1>Rekisteröityminen</h1>
+        <form action="#" name="registration" method="post">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Nimi</label>
+                        <div class="controls">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">S&auml;hk&ouml;postiosoite</label>
+                        <div class="controls">
+                            <input type="text" class="form-control">
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label">S&auml;hk&ouml;postiosoite</label>
-                    <div class="controls">
-                        <input type="text" class="form-control">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Salasana</label>
+                        <div class="controls">
+                            <input type="password" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Salasana uudelleen</label>
+                        <div class="controls">
+                            <input type="password" class="form-control">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label">Salasana</label>
-                    <div class="controls">
-                        <input type="password" class="form-control">
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label">Salasana uudelleen</label>
-                    <div class="controls">
-                        <input type="password" class="form-control">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <button class="btn btn-primary" type="submit">Rekisteröidy</button>
-    </form>
+            <button class="btn btn-primary" type="submit">Rekisteröidy</button>
+        </form>
+    </div>
 </div>
-<!-- /container -->
-</body>
+    <!-- /container -->
+    {% block body %}
+    <!-- jQuery -->
+    <script src="{{base_path}}/vendor/jquery.min.js"></script>
 
+    <!-- Bootstrap (skriptitiedosto) -->
+    <script src="{{base_path}}/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Oma skriptitiedostomme -->
+    <script src="{{base_path}}/assets/js/site.js"></script>
+    {% endblock %}
+    </body>
 </html>
