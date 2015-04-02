@@ -26,7 +26,7 @@ if(session_id() == '') {
 header('Content-Type: text/html; charset=utf-8');
 
 // Otetaan Composer käyttöön
-require 'vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
