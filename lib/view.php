@@ -30,7 +30,7 @@ namespace Tsoha;
     private static function get_twig(){
       \Twig_Autoloader::register();
 
-      $twig_loader = new \Twig_Loader_Filesystem('app/views');
+      $twig_loader = new \Twig_Loader_Filesystem('src/Lounaslippu/views');
 
       return new \Twig_Environment($twig_loader);
     }

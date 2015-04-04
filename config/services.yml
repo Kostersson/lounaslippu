@@ -1,4 +1,31 @@
 services:
+  context:
+    class: Symfony\Component\Routing\RequestContext
+  matcher:
+    class: Symfony\Component\Routing\Matcher\UrlMatcher
+    arguments:
+      - %routes%
+      - @context
+  resolver:
+    class: Symfony\Component\HttpKernel\Controller\ControllerResolver
+  listener.router:
+    class: Symfony\Component\HttpKernel\EventListener\RouterListener
+    arguments:
+      - @matcher
+  listener.response:
+    class: Symfony\Component\HttpKernel\EventListener\ResponseListener
+    arguments:
+      - "UTF-8"
+  dispatcher:
+    class: Symfony\Component\EventDispatcher\EventDispatcher
+    calls:
+      - [addSubscriber, ["@listener.router"]]
+      - [addSubscriber, ["@listener.response"]]
+  app:
+    class: Kostersson\Lounaslippu\AppKernel
+    arguments:
+      - @dispatcher
+      - @resolver
   lounaslippu.controller.test:
     class: Kostersson\Lounaslippu\Controller\TestController
   lounaslippu.controller.login:

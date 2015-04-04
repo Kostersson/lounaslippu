@@ -1,22 +1,9 @@
 <?php
-use Lounaslippu\Controller\HelloWorldController;
-use Lounaslippu\Controller\RegistrationController;
-use Lounaslippu\Controller\LoginController;
+use Symfony\Component\Routing;
 
-$routes->get('/', function() {
-    HelloWorldController::index();
-});
-
-$routes->get('/rekisteroityminen', function() {
-    RegistrationController::index();
-});
-$routes->get('/sisaankirjautuminen', function() {
-    LoginController::index();
-});
-$routes->post('/sisaankirjautuminen', function() {
-    LoginController::login();
-});
-
-$routes->get('/hiekkalaatikko', function() {
-    HelloWorldController::sandbox();
-});
+$routes = new Routing\RouteCollection();
+$routes->add('test', new Routing\Route(
+        '/test',
+        array('_controller' => 'Lounaslippu\\Controller\\TestController::FooBarAction'))
+);
+return $routes;

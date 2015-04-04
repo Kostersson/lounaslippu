@@ -28,17 +28,19 @@ header('Content-Type: text/html; charset=utf-8');
 // Otetaan Composer käyttöön
 require_once 'vendor/autoload.php';
 
-use Symfony\Component\Config\FileLocator;
-use Symfony\Component\Routing\Loader\YamlFileLoader;
-use Lounaslippu\AppKernel;
+use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-// Ladataan reitit
-$locator = new FileLocator(array(__DIR__));
-$loader = new YamlFileLoader($locator);
-$routes = $loader->load('config/routes.yml');
-
-$app = new AppKernel($routes);
+$container = new ContainerBuilder();
+$container->setParameter('routes', include  'config/routes.php');
+$container->setParameter('charset', 'UTF-8');
+$loader = new YamlFileLoader($container, new FileLocator(__DIR__));
+$loader->load('config/services.yml');
 
 $request = Request::createFromGlobals();
-$app->handle($request)->send();
+
+$response = $container->get('app')->handle($request);
+$response->send();
