@@ -2,6 +2,7 @@
   "autoload": {
     "classmap": [
       "config/database.php",
+      "app/AppKernel.php",
       "lib",
       "app/controllers",
       "app/services"
