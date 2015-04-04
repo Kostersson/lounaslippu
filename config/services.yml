@@ -1,0 +1,15 @@
+services:
+  lounaslippu.controller.test:
+    class: Lounaslippu\Controller\TestController
+  lounaslippu.controller.login:
+    class: Lounaslippu\Controller\LoginController
+    arguments:
+          - @lounaslippu.service.authentication
+
+  lounaslippu.service.authentication:
+    class: Lounaslippu\Service\AuthenticationService
+    arguments:
+      - @lounaslippu.repository.authentication
+
+  lounaslippu.repository.authentication:
+    class: Lounaslippu\Repository\AuthenticationRepository
