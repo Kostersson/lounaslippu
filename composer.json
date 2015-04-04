@@ -3,9 +3,7 @@
     "classmap": [
       "config/database.php",
       "app/AppKernel.php",
-      "lib",
-      "app/controllers",
-      "app/services"
+      "lib"
     ],
     "psr-4": {"Kostersson\\Lounaslippu\\": ""}
   },
