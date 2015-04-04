@@ -1,4 +1,4 @@
 lounaslippu.test:
-  pattern: /test
+  pattern: /
   defaults: { _controller: lounaslippu.controller.test:FooBarAction }
   methods: [GET]
