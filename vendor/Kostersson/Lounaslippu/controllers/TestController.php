@@ -1,6 +1,6 @@
 <?php
 
-namespace Lounaslippu\Controller;
+namespace Kostersson\Lounaslippu\Controller;
 
 
 class TestController {

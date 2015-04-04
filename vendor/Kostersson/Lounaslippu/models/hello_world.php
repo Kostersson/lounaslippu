@@ -1,5 +1,5 @@
 <?php
-namespace Lounaslippu\Model;
+namespace Kostersson\Lounaslippu\Model;
   class HelloWorld extends BaseModel{
 
     public static function say_hi(){

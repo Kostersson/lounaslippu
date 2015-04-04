@@ -1,7 +1,7 @@
 <?php
-namespace Lounaslippu\Controller;
+namespace Kostersson\Lounaslippu\Controller;
 
-use Lounaslippu\Service\AuthenticationService;
+use Kostersson\Lounaslippu\Service\AuthenticationService;
 use Tsoha\View;
 use Tsoha\BaseController;
 

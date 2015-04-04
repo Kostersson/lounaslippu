@@ -6,7 +6,8 @@
       "lib",
       "app/controllers",
       "app/services"
-    ]
+    ],
+    "psr-4": {"Kostersson\\Lounaslippu\\": ""}
   },
   "require": {
     "twig/twig": "~1.5",

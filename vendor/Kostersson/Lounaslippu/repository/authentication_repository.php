@@ -1,5 +1,5 @@
 <?php
-namespace Lounaslippu\Repository;
+namespace Kostersson\Lounaslippu\Repository;
 
 use Tsoha\DB;
 class AuthenticationRepository{

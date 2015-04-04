@@ -1,7 +1,7 @@
 <?php
-namespace Lounaslippu\Service;
+namespace Kostersson\Lounaslippu\Service;
 
-use Lounaslippu\Repository\AuthenticationRepository;
+use Kostersson\Lounaslippu\Repository\AuthenticationRepository;
 
 class AuthenticationService{
 

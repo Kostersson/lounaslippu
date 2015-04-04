@@ -1,5 +1,5 @@
 <?php
-namespace Lounaslippu\Controller;
+namespace Kostersson\Lounaslippu\Controller;
 
 use Tsoha\View;
 use Tsoha\BaseController;
