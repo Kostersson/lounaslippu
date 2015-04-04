@@ -28,19 +28,17 @@ header('Content-Type: text/html; charset=utf-8');
 // Otetaan Composer käyttöön
 require_once 'vendor/autoload.php';
 
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\Routing\Loader\YamlFileLoader;
+use Lounaslippu\AppKernel;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing;
+
+// Ladataan reitit
+$locator = new FileLocator(array(__DIR__));
+$loader = new YamlFileLoader($locator);
+$routes = $loader->load('config/routes.yml');
+
+$app = new AppKernel($routes);
 
 $request = Request::createFromGlobals();
-
-$routes = new \Slim\Slim();
-
-$routes->get('/tietokantayhteys', function(){
-    DB::test_connection();
-});
-
-// Otetaan reitit käyttöön
-require 'config/routes.php';
-
-$routes->run();
+$app->handle($request)->send();

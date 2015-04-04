@@ -22,7 +22,6 @@ class LoginController extends BaseController{
 
     public static function login(){
         // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
-        self::authenticationService->signIn("jaakko", "pekka");
         View::make('login.html');
     }
 
