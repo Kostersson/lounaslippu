@@ -19,5 +19,12 @@
     "symfony/http-kernel": "2.6.*",
     "symfony/event-dispatcher": "2.6.*",
     "symfony/templating": "2.6.*"
+  },
+  "extra": {
+    "heroku": {
+      "compile": [
+        "chmod -R 755 /assets"
+      ]
+    }
   }
 }
