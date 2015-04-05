@@ -11,11 +11,11 @@ $explode =  explode('/', $script_name);
 if($explode[1] == 'index.php'){
     $base_folder = '';
 }else{
-    $base_folder = $explode[1];
+    $base_folder = "/" . $explode[1];
 }
 
 // Määritetään sovelluksen juuripolulle vakio BASE_PATH
-define('BASE_PATH', '/' . $base_folder);
+define('BASE_PATH', '' . $base_folder);
 
 // Luodaan uusi tai palautetaan olemassaoleva sessio
 if(session_id() == '') {
