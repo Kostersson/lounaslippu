@@ -2,12 +2,13 @@
   "autoload": {
     "classmap": [
       "config/database.php",
-      "app/AppKernel.php",
+      "app/Router.php",
       "lib"
     ],
     "psr-0": { "Lounaslippu": "src/"}
   },
   "require": {
+    "slim/slim": "2.*",
     "twig/twig": "~1.5",
     "raveren/kint": "v0.9",
     "symfony/dependency-injection": "2.6.*",

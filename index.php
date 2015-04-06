@@ -28,20 +28,13 @@ header('Content-Type: text/html; charset=utf-8');
 // Otetaan Composer käyttöön
 require_once 'vendor/autoload.php';
 
-use Symfony\Component\DependencyInjection\Reference;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 $container = new ContainerBuilder();
-$container->setParameter('routes', include  'config/routes.php');
-$container->setParameter('charset', 'UTF-8');
 $loader = new YamlFileLoader($container, new FileLocator(__DIR__));
 $loader->load('config/services.yml');
 
-die(var_dump($container->getResources()));
-$request = Request::createFromGlobals();
-
-$response = $container->get('app')->handle($request);
-$response->send();
+$routes = new \Slim\Slim();
+$router = new Lounaslippu\Router($routes, $container);
