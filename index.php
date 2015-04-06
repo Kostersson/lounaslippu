@@ -40,6 +40,7 @@ $container->setParameter('charset', 'UTF-8');
 $loader = new YamlFileLoader($container, new FileLocator(__DIR__));
 $loader->load('config/services.yml');
 
+die(var_dump($container->getResources()));
 $request = Request::createFromGlobals();
 
 $response = $container->get('app')->handle($request);
