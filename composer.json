@@ -13,13 +13,7 @@
     "raveren/kint": "v0.9",
     "symfony/dependency-injection": "2.6.*",
     "symfony/yaml": "2.6.*",
-    "symfony/config": "2.6.*",
-    "symfony/routing": "2.6.*",
-    "symfony/http-foundation": "2.6.*",
-    "symfony/class-loader": "2.6.*",
-    "symfony/http-kernel": "2.6.*",
-    "symfony/event-dispatcher": "2.6.*",
-    "symfony/templating": "2.6.*"
+    "symfony/config": "2.6.*"
   },
   "extra": {
     "heroku": {
