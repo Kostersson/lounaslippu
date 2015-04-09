@@ -28,6 +28,11 @@ class UserModel extends BaseModel {
      */
     protected $modified;
 
+    /**
+     * @var string
+     */
+    protected $password;
+
     public function __construct($attributes){
         parent::__construct($attributes);
         $this->addValidators();
@@ -77,13 +82,6 @@ class UserModel extends BaseModel {
         return $this->created;
     }
 
-    /**
-     * @param \DateTime $created
-     */
-    public function setCreated($created)
-    {
-        $this->created = $created;
-    }
 
     /**
      * @return \DateTime
@@ -94,24 +92,47 @@ class UserModel extends BaseModel {
     }
 
     /**
-     * @param \DateTime $modified
+     * @param string $password
      */
-    public function setModified($modified)
+    public function setPassword($password)
     {
-        $this->modified = $modified;
+        $this->password = $password;
     }
+
+    /**
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+
 
     protected function addUserValidator()
     {
         $v = new Validator($_POST);
         $v->rule('required', ['name', 'email', 'password1', 'password2'])->message('Kaikki kentät ovat pakollisia');
-        $v->rule('email', 'email')->message("Sähköposti ei ole oikena mallinen");
-        $v->rule('equals', ['password1', 'password2'])->message("Salasanat eivät täsmää");
+        $v->rule('email', 'email')->message("Sähköposti ei ole oikean mallinen");
+        $v->rule('equals', 'password1', 'password2')->message("Salasanat eivät täsmää");
         if($v->validate()) {
             return array();
         } else {
            return $v->errors();
         }
     }
+
+    /**
+     * Should return array("prepared sql :key" => array("key" => "value"))
+     * @return array|null
+     */
+    public function getInsertSql()
+    {
+        $sql ="insert into users (name, email, password) values (:name, :email, :password)";
+        return array( $sql => array(
+         "name" => $this->name, "email" => $this->email, "password" => $this->password
+        ));
+    }
+
 
 }

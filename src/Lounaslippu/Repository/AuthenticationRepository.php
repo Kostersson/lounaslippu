@@ -22,4 +22,10 @@ class AuthenticationRepository{
     {
         return crypt($password, $hash) == $hash;
     }
+
+    public function getUsernamesByEmail($email){
+        $query = DB::connection()->prepare('SELECT email FROM users WHERE email = :email');
+        $query->execute(array('email' => $email));
+        return $query->fetch();
+    }
 }

@@ -32,7 +32,9 @@ namespace Tsoha;
 
       $twig_loader = new \Twig_Loader_Filesystem('src/Lounaslippu/views');
 
-      return new \Twig_Environment($twig_loader);
+      $twig = new \Twig_Environment($twig_loader, array('debug' => true));
+      $twig->addExtension(new \Twig_Extension_Debug());
+      return $twig;
     }
 
     private static function set_flash_message(&$content){

@@ -1,0 +1,21 @@
+{
+  "name": "lounaslippu",
+  "version": "1",
+  "homepage": "https://github.com/Kostersson/lounaslippu",
+  "authors": [
+    "kostersson <pauli.kostamo@helsinki.fi>"
+  ],
+  "description": "Lounaslippu - get luch easier",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3",
+    "bootstrap-validator": "~0.8"
+  }
+}

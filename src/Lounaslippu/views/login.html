@@ -1,23 +1,13 @@
-<!doctype html>
-<html lang="fi-FI">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends "base.html" %}
 
-        <title>
-            {% block title %}
-            Lounaslippu
-            {% endblock %}
-        </title>
-
-        {% block head %}
+{% block head %}
         <!-- Bootstrap (tyylitiedosto) -->
-        <link href="{{base_path}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{base_path}}/bower/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+        <link href="{{base_path}}/bower/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
 
         <!-- Oma tyylitiedostomme -->
         <link href="{{base_path}}/assets/css/site.css" rel="stylesheet">
-        {% endblock %}
+
 
         <style type="text/css">
             body {
@@ -61,11 +51,13 @@
                 border-top-right-radius: 0;
             }
         </style>
-    </head>
-    <body>
-        <div class="container">
-            {% include 'messages.html' %}
+{% endblock %}
 
+{% block menu %}
+{% endblock %}
+
+{% block content %}
+            {% include 'messages.html' %}
             <form class="form-signin" action="{{base_path}}/sisaankirjautuminen" name="login" method="post">
                 <h2 class="form-signin-heading">Lounaslippu</h2>
                 <input type="text" class="form-control" placeholder="Sähköposti" name="email">
@@ -73,17 +65,4 @@
                 <button class="btn pull-left btn-primary btn-lg" type="submit">Kirjaudu sisään</button>
                 <a class="btn pull-right btn-info btn-lg" href="{{base_path}}/rekisteroityminen">Rekisteröidy</a>
             </form>
-
-        </div> <!-- /container -->
-        {% block body %}
-        <!-- jQuery -->
-        <script src="{{base_path}}/vendor/jquery.min.js"></script>
-
-        <!-- Bootstrap (skriptitiedosto) -->
-        <script src="{{base_path}}/vendor/bootstrap/js/bootstrap.min.js"></script>
-
-        <!-- Oma skriptitiedostomme -->
-        <script src="{{base_path}}/assets/js/site.js"></script>
-        {% endblock %}
-    </body>
-</html>
+{% endblock %}

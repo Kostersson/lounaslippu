@@ -1,23 +1,39 @@
 services:
-
+  slim:
+    class: Slim\Slim
   lounaslippu.repository.authentication:
     class: Lounaslippu\Repository\AuthenticationRepository
+  lounaslippu.repository.user:
+    class: Lounaslippu\Repository\UserRepository
 
   lounaslippu.service.authentication:
     class: Lounaslippu\Service\AuthenticationService
     arguments:
       - @lounaslippu.repository.authentication
 
+  lounaslippu.service.registration:
+    class: Lounaslippu\Service\RegistrationService
+    arguments:
+      - @lounaslippu.repository.authentication
+      - @lounaslippu.repository.user
+
   lounaslippu.controller.login:
     class: Lounaslippu\Controller\LoginController
     arguments:
-          - @lounaslippu.service.authentication
+      - @lounaslippu.service.authentication
   lounaslippu.controller.front_page:
     class: Lounaslippu\Controller\FrontPageController
     arguments:
-          - @lounaslippu.service.authentication
+      - @lounaslippu.service.authentication
   lounaslippu.controller.registration:
     class: Lounaslippu\Controller\RegistrationController
+    arguments:
+      - @lounaslippu.service.registration
+  lounaslippu.api.controller.validator:
+    class: Lounaslippu\Controller\ValidatorController
+    arguments:
+      - @slim
+      - @lounaslippu.service.registration
 
 
 

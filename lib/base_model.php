@@ -1,6 +1,6 @@
 <?php
 namespace Tsoha;
-  class BaseModel{
+  abstract class BaseModel{
     // "protected"-attribuutti on käytössä vain luokan ja sen perivien luokkien sisällä
     protected $validators;
 
@@ -25,5 +25,11 @@ namespace Tsoha;
 
       return $errors;
     }
+
+    /**
+     * Should return array("prepared sql :key" => array("key" => "value"))
+     * @return array|null
+     */
+    public abstract function getInsertSql();
 
   }

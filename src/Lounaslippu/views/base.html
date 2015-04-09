@@ -13,7 +13,8 @@
 
     {% block head %}
       <!-- Bootstrap (tyylitiedosto) -->
-      <link href="{{base_path}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <link href="{{base_path}}/bower/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+      <link href="{{base_path}}/bower/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
 
       <!-- Oma tyylitiedostomme -->
       <link href="{{base_path}}/assets/css/site.css" rel="stylesheet">
@@ -21,7 +22,7 @@
   </head>
 
   <body>
-
+  {% block menu %}
     <nav class="navbar navbar-inverse" role="navigation">
       <div class="container-fluid">
 
@@ -71,7 +72,7 @@
         </div>
       </div>
     </nav>
-
+  {% endblock %}
     <div id="main-container">
       <!-- Dynaaminen sisältö tulee tähän -->
       {% block content %}{% endblock %}
@@ -79,11 +80,10 @@
 
     {% block body %}
       <!-- jQuery -->
-      <script src="{{base_path}}/vendor/jquery.min.js"></script>
-
+      <script src="{{base_path}}/bower/jquery/dist/jquery.min.js"></script>
       <!-- Bootstrap (skriptitiedosto) -->
-      <script src="{{base_path}}/vendor/bootstrap/js/bootstrap.min.js"></script>
-
+      <script src="{{base_path}}/bower/bootstrap/dist/js/bootstrap.js"></script>
+      <script src="{{base_path}}/bower/bootstrap-validator/dist/validator.js"></script>
       <!-- Oma skriptitiedostomme -->
       <script src="{{base_path}}/assets/js/site.js"></script>
     {% endblock %}

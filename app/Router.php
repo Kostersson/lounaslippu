@@ -39,7 +39,13 @@ class Router
         $this->slim->get('/rekisteroityminen', function () use ($container){
             $container->get('lounaslippu.controller.registration')->showPageAction();
         });
+        $this->slim->post('/rekisteroityminen', function () use ($container){
+            $container->get('lounaslippu.controller.registration')->registrateUserAction();
+        });
 
+        $this->slim->map('/api/validator/username', function () use ($container){
+            $container->get('lounaslippu.api.controller.validator')->usernameValidation();
+        })->via('GET', 'POST');
 
     }
 }
