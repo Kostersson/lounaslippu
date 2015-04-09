@@ -32,9 +32,14 @@ class Router
         $this->slim->post('/sisaankirjautuminen', function () use ($container){
             $container->get('lounaslippu.controller.login')->loginAction();
         });
+        $this->slim->map('/uloskirjautuminen', function () use ($container){
+            $container->get('lounaslippu.controller.login')->logoutAction();
+        })->via('GET', 'POST');
 
         $this->slim->get('/rekisteroityminen', function () use ($container){
             $container->get('lounaslippu.controller.registration')->showPageAction();
         });
+
+
     }
 }

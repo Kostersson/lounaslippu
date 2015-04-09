@@ -23,6 +23,9 @@ class LoginController {
 
     public function loginAction(){
         $this->authenticationService->signIn($_POST["email"], $_POST["password"]);
+    }
 
+    public function logoutAction(){
+        $this->authenticationService->logout();
     }
 }

@@ -4,6 +4,7 @@ namespace Lounaslippu\Controller;
 
 
 use Lounaslippu\Service\AuthenticationService;
+use Tsoha\View;
 
 class FrontPageController {
     private $authenticationService;
@@ -19,5 +20,6 @@ class FrontPageController {
 
     public function showPageAction(){
         $this->authenticationService->authenticate();
+        return View::make('home.html');
     }
 }
