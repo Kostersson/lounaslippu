@@ -1,5 +1,6 @@
 <?php
 namespace Tsoha;
+
   class DB{
 
       public static function connection(){
@@ -10,15 +11,15 @@ namespace Tsoha;
         try {
             // Alustetaan PDO
             if(isset($config['username'])){
-              $connection = new PDO($config['resource'], $config['username'], $config['password']);
+              $connection = new \PDO($config['resource'], $config['username'], $config['password']);
             }else{
-              $connection = new PDO($config['resource']);
+              $connection = new \PDO($config['resource']);
             }
 
             // Asetetaan tietokannan kenttien koodaukseksi utf8
             $connection->exec("set names utf8");
 
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             die('Virhe tietokantayhteydessä: ' . $e->getMessage());
         }
 

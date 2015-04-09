@@ -8,6 +8,9 @@
 /* Koodia. Tästä tiedostosta ei kannata ottaa mallia mihinkään */
 /***************************************************************/
 
+use Tsoha\DatabaseConfig;
+use Tsoha\DB;
+
 $connection_config = DatabaseConfig::connection_config();
 
 function getDatabase() {

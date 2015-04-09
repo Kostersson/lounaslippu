@@ -2,7 +2,6 @@
 namespace Lounaslippu\Controller;
 
 use Lounaslippu\Service\AuthenticationService;
-use Symfony\Component\HttpFoundation\Response;
 use Tsoha\View;
 
 
@@ -18,10 +17,12 @@ class LoginController {
         $this->authenticationService = $authenticationService;
     }
 
-
-    public  function showPageAction(){
-        // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
-        return new Response(View::make('login.html'));
+    public function showPageAction(){
+        return View::make('login.html');
     }
 
+    public function loginAction(){
+        $this->authenticationService->signIn($_POST["email"], $_POST["password"]);
+
+    }
 }

@@ -1,9 +1,10 @@
 <?php
+namespace Tsoha;
 
   class DatabaseConfig{
 
     // Valitse käyttämäsi tietokantapalvelin - PostgreSQL (psql) tai MySQL (mysql)
-    private static $use_database = 'psql';
+    private static $use_database = 'mysql';
 
     // Muuta users-ympäristöä asettamalle oikeat arvot KAYTTAJATUNNUS-kohtaan (käyttäjätunnuksesi)
     // ja SALASANA-kohtaan (tietokantasi pääkäyttäjän salasana)
@@ -12,9 +13,10 @@
         'resource' => 'pgsql:'
       ),
       'mysql' => array(
-        'resource' => 'mysql:unix_socket=/home/KAYTTAJATUNNUS/mysql/socket;dbname=mysql',
+        //'resource' => 'mysql:unix_socket=/home/ppkostam/mysql/socket;dbname=mysql',
+        'resource' => 'mysql:host=127.0.0.1;port=3306;dbname=lounaslippu',
         'username' => 'root',
-        'password' => 'SALASANA'
+        'password' => ''
       )
     );
 
