@@ -3,6 +3,7 @@
 namespace Lounaslippu\Service;
 
 
+use Lounaslippu\Model\User;
 use Lounaslippu\Service\PaymentService;
 use Lounaslippu\Repository\TicketRepository;
 
@@ -29,5 +30,10 @@ class TicketService {
         $this->paymentService = $paymentService;
     }
 
+    public function getAmountOfAvailableTickets(User $user){
+        $start = new \DateTime("first day of January " . date("Y"));
+        $end = new \DateTime("last day of May" . date("Y"));
+        return MAX_AMOUNT_OF_TICKETS_PER_SEMESTER - $this->ticketRepository->getAmountOfOrderedTickets($user, $start, $end);
+    }
 
 }

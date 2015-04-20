@@ -30,8 +30,8 @@ Lounasliput
     {% for invoice in unpaid_invoices %}
         <tr>
             <td>{{ invoice.created }}</td>
-            <td>20 kpl</td>
-            <td>{{ invoice.amount }} €</td>
+            <td>{{ invoice.tickets }}kpl</td>
+            <td>{{ invoice.amount }}€</td>
             <td>{{ invoice.referenceNumber }}</td>
         </tr>
     {% endfor %}
@@ -55,14 +55,17 @@ Lounasliput
     <tbody>
     {% for payment in payments %}
         <tr>
-            <td>{{payment.recordingDate}}</td>
-            <td>20 kpl</td>
-            <td>{{payment.invoiceAmount}}€</td>
-            <td>{{payment.referenceNumber}}</td>
-            <td>21.3.2015 16:20</td>
-            <td>{{payment.paid}}€</td>
-            <td>{{payment.amountLeft}}€</td>
-            <td><a href="#">Lataa</a></td>
+            <td>{{ payment.dateOfPayment }}</td>
+            <td>{{ payment.tickets }}kpl</td>
+            <td>{{ payment.invoiceAmount }}€</td>
+            <td>{{ payment.referenceNumber }}</td>
+            <td>{{ payment.recordingDate }}</td>
+            <td>{{ payment.paid }}€</td>
+            <td>{{ payment.amountLeft }}€</td>
+            <td>{% if payment.amountLeft == 0 %}
+                <a href="lounasliput/{{ payment.invoiceId }}/lataa">Lataa</a>
+                {% endif %}
+            </td>
         </tr>
     {% endfor %}
     </tbody>

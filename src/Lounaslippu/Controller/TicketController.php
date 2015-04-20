@@ -46,4 +46,11 @@ class TicketController {
             "unpaid_invoices" => $unpaidInvoices
         ));
     }
+
+    public function showOrderPageAction(){
+        $this->authenticationService->authenticate();
+        return View::make('order.html', array(
+            "max_tickets" => $this->ticketService->getAmountOfAvailableTickets($this->authenticationService->getUser())
+        ));
+    }
 }

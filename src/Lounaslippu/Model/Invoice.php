@@ -19,6 +19,12 @@ class Invoice extends BaseModel{
     protected $id;
 
     /**
+     * Amount of tickets
+     * @var int
+     */
+    protected $tickets;
+
+    /**
      * @var int
      */
     protected $user_id;
@@ -47,6 +53,14 @@ class Invoice extends BaseModel{
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTickets()
+    {
+        return $this->tickets;
     }
 
     /**

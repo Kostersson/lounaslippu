@@ -1,3 +1,4 @@
 <?php
 define("SESSION_TTL", 15);
 define("CRYPT_ROUNDS", 15);
+define("MAX_AMOUNT_OF_TICKETS_PER_SEMESTER", 100);

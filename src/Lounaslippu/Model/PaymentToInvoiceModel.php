@@ -11,6 +11,16 @@ class PaymentToInvoiceModel
     private $invoice_id;
 
     /**
+     * @var \Date
+     */
+    private $date_of_payment;
+
+    /**
+     * Amount of tickets
+     * @var int
+     */
+    private $tickets;
+    /**
      * @var bigint
      */
     private $reference_number;
@@ -53,6 +63,14 @@ class PaymentToInvoiceModel
     public function getInvoiceId()
     {
         return $this->invoice_id;
+    }
+
+    /**
+     * @return \Date
+     */
+    public function getDateOfPayment()
+    {
+        return $this->date_of_payment;
     }
 
     /**
@@ -101,6 +119,14 @@ class PaymentToInvoiceModel
     public function getRecordingDate()
     {
         return $this->recording_date;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTickets()
+    {
+        return $this->tickets;
     }
 
 }

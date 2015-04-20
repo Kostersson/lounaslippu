@@ -60,8 +60,9 @@ CREATE TABLE `payment` (
 	`archiving_code` VARCHAR(255) NOT NULL,
 	`reference_number` BIGINT(20) NOT NULL,
 	`amount` DECIMAL(5,2) NOT NULL,
-	`recording_date` DATE NOT NULL,
+	`recording_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	`amount_left` DECIMAL(5,2) NOT NULL,
+	`date_of_payment` DATE NULL DEFAULT NULL,
 	PRIMARY KEY (`archiving_code`),
 	INDEX `payment_to_invoice` (`reference_number`),
 	CONSTRAINT `payment_to_invoice` FOREIGN KEY (`reference_number`) REFERENCES `invoice` (`reference_number`) ON UPDATE NO ACTION ON DELETE NO ACTION
