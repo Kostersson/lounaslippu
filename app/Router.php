@@ -26,6 +26,10 @@ class Router
             $container->get('lounaslippu.controller.front_page')->showPageAction();
         });
 
+        $this->slim->get('/lounasliput', function () use ($container){
+            $container->get('lounaslippu.controller.ticket')->showPageAction();
+        });
+
         $this->slim->get('/sisaankirjautuminen', function () use ($container){
             $container->get('lounaslippu.controller.login')->showPageAction();
         });

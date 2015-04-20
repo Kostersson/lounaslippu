@@ -3,7 +3,7 @@
 namespace Lounaslippu\Service;
 
 
-use Lounaslippu\Model\UserModel;
+use Lounaslippu\Model\User;
 use Lounaslippu\Repository\AuthenticationRepository;
 use Lounaslippu\Repository\UserRepository;
 use Tsoha\Redirect;
@@ -17,7 +17,8 @@ class RegistrationService
 
     /**
      * RegistrationService constructor.
-     * @param $authenticationRepository
+     * @param AuthenticationRepository $authenticationRepository
+     * @param UserRepository $userRepository
      */
     public function __construct(AuthenticationRepository $authenticationRepository, UserRepository $userRepository)
     {
@@ -27,7 +28,7 @@ class RegistrationService
 
     public function registrateNewUser()
     {
-        $user = new UserModel($_POST);
+        $user = new User($_POST);
         if ($user->errors()) {
             $errors = $user->errors();
             $errorMessage = "";

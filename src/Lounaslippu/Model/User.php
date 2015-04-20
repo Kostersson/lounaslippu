@@ -6,7 +6,12 @@ namespace Lounaslippu\Model;
 use Tsoha\BaseModel;
 use Valitron\Validator;
 
-class UserModel extends BaseModel {
+class User extends BaseModel {
+
+    /**
+     * @var int
+     */
+    protected $id;
 
     /**
      * @var string
@@ -40,6 +45,14 @@ class UserModel extends BaseModel {
 
     private function addValidators(){
         $this->validators[] = "addUserValidator";
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**

@@ -1,7 +1,7 @@
 <?php
 namespace Lounaslippu\Service;
 
-use Lounaslippu\Model\UserModel;
+use Lounaslippu\Model\User;
 use Lounaslippu\Repository\AuthenticationRepository;
 use Tsoha\Redirect;
 
@@ -30,7 +30,7 @@ class AuthenticationService
             Redirect::to("/");
         }
         $user = $this->authenticationRepository->getUserWithPassword($username, $password);
-        if ($user instanceof UserModel) {
+        if ($user instanceof User) {
             $_SESSION["user"] = $user;
             $_SESSION["timestamp"] = time();
             Redirect::to("/");
@@ -41,7 +41,7 @@ class AuthenticationService
 
     private function validateSession()
     {
-        if (!isset($_SESSION["user"]) || !($_SESSION["user"] instanceof UserModel)) {
+        if (!isset($_SESSION["user"]) || !($_SESSION["user"] instanceof User)) {
             return false;
         }
         if ($this->sessionExpired()) {
@@ -66,6 +66,16 @@ class AuthenticationService
         unset($_SESSION["timestamp"]);
         $message = array("success" => "Sinut on nyt kirjattu ulos järjestelmästä");
         Redirect::to("/", $message);
+    }
+
+    /**
+     * @return User|null
+     */
+    public function getUser()
+    {
+        if ($this->validateSession()) {
+            return $_SESSION["user"];
+        }
     }
 
 

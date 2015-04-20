@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}
+Lounasliput
+{% endblock %}
+
+{% block content %}
+
+<h1>Lounasliput</h1>
+<div class="alert alert-dismissable alert-success">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    Voit ostaa viel&auml; <b>20</b>&nbsp;lippua.
+</div>
+<div class="alert alert-dismissable alert-info">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    Viimeisin maksujen tuonti tehty <b>22.3.2015 klo 15.45</b>
+</div>
+<h2>Kirjausta/ maksua odottavat liput</h2>
+<table class="table table-hover table-bordered table-condensed">
+    <thead>
+    <tr>
+        <th>P&auml;iv&auml;m&auml;&auml;r&auml;</th>
+        <th>M&auml;&auml;r&auml;</th>
+        <th>Hinta</th>
+        <th>Viitenumero</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>22.3.2015 16:20</td>
+        <td>20 kpl</td>
+        <td>40€</td>
+        <td>123456789</td>
+    </tr>
+    </tbody>
+</table>
+<h2>Kirjatut maksut</h2>
+<table class="table table-hover table-bordered table-condensed">
+    <thead>
+    <tr>
+        <th>P&auml;iv&auml;m&auml;&auml;r&auml;</th>
+        <th>M&auml;&auml;r&auml;</th>
+        <th>Hinta</th>
+        <th>Viitenumero</th>
+        <th>Kirjattu</th>
+        <th>Summa</th>
+        <th>Saldo</th>
+        <th>Lataa</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>21.3.2015</td>
+        <td>20 kpl</td>
+        <td>40€</td>
+        <td>123456789</td>
+        <td>21.3.2015 16:20</td>
+        <td>20€</td>
+        <td>0€</td>
+        <td><a href="#">Lataa</a></td>
+    </tr>
+    <tr>
+        <td>20.3.2015</td>
+        <td>20 kpl</td>
+        <td>40€</td>
+        <td>123456789</td>
+        <td>21.3.2015 16:20</td>
+        <td>20€</td>
+        <td>-20€</td>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
+
+{% endblock %}

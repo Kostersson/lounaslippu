@@ -1,7 +1,7 @@
 <?php
 namespace Lounaslippu\Repository;
 
-use Lounaslippu\Model\UserModel;
+use Lounaslippu\Model\User;
 use Tsoha\DB;
 class AuthenticationRepository{
 
@@ -12,7 +12,7 @@ class AuthenticationRepository{
         $user = null;
         if($result !== false){
             if($this->validatePassword($password, $result["password"])) {
-                $user = new UserModel($result);
+                $user = new User($result);
             }
         }
         return $user;
