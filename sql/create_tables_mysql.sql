@@ -46,7 +46,7 @@ ENGINE=InnoDB
 CREATE TABLE `invoice` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`reference_number` BIGINT(20) NOT NULL DEFAULT '0',
-	`amount` DECIMAL(3,2) NOT NULL DEFAULT '0',
+	`amount` DECIMAL(5,2) NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`),
 	UNIQUE INDEX `reference_number` (`reference_number`)
 )
@@ -56,7 +56,7 @@ ENGINE=InnoDB
 CREATE TABLE `payment` (
 	`archiving_code` VARCHAR(255) NOT NULL,
 	`reference_number` BIGINT(20) NOT NULL,
-	`amount` DECIMAL(3,2) NOT NULL,
+	`amount` DECIMAL(5,2) NOT NULL,
 	`recording_date` DATE NOT NULL,
 	PRIMARY KEY (`archiving_code`),
 	INDEX `payment_to_invoice` (`reference_number`),
