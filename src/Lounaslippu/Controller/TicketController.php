@@ -38,7 +38,12 @@ class TicketController {
 
     public function showPageAction(){
         $this->authenticationService->authenticate();
-        $this->paymentService->getUserPayments($this->authenticationService->getUser());
-        return View::make('tickets.html');
+        $payments = $this->paymentService->getUsersPayments($this->authenticationService->getUser());
+        $unpaidInvoices = $this->paymentService->getUsersUnpaidInvoices($this->authenticationService->getUser());
+
+        return View::make('tickets.html', array(
+            "payments" => $payments,
+            "unpaid_invoices" => $unpaidInvoices
+        ));
     }
 }

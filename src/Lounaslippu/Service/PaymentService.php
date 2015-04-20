@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: kostersson
- * Date: 20.4.2015
- * Time: 15:30
- */
 
 namespace Lounaslippu\Service;
 
@@ -25,8 +19,11 @@ class PaymentService {
         $this->paymentRepository = $paymentRepository;
     }
 
-    public function getUserPayments(User $user){
-        die(var_dump($user->getId()));
+    public function getUsersPayments(User $user){
+        return $this->paymentRepository->getUsersPayments($user);
     }
 
+    public function getUsersUnpaidInvoices(User $user){
+        return $this->paymentRepository->getUsersUnpaidInvoices($user);
+    }
 }
