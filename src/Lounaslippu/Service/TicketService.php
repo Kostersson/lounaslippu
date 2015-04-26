@@ -75,7 +75,6 @@ class TicketService {
             ErrorService::setErrors($error);
             return;
         }
-
         Redirect::to("/lounasliput", array("success" => "Liput tilattu onnistuneesti. Alla näet avoimet laskusi."));
     }
 

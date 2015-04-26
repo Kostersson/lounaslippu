@@ -8,9 +8,11 @@ class EntityRepository {
 
     public function save(array $models){
         /** @var BaseModel $model */
+        $connection = DB::connection();
+        $connection->beginTransaction();
         foreach($models as $model){
             $data = $model->getInsertSql();
-            $connection = DB::connection();
+
             $query = $connection->prepare(key($data));
             if(!$query->execute(current($data))){
                 $error = $query->errorInfo();
@@ -20,6 +22,7 @@ class EntityRepository {
                 $model->setId($connection->lastInsertId());
             }
         }
+        $connection->commit();
         return true;
     }
 }

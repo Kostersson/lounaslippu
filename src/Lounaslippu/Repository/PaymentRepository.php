@@ -28,7 +28,7 @@ class PaymentRepository {
     }
 
     public function getUsersUnpaidInvoices(User $user){
-        $query = DB::connection()->prepare('select count(t.id) as tickets, i.id, i.user_id, i.reference_number, i.amount, i.created from ticket t left join invoice i on t.invoice_id = i.id left join payment p on p.reference_number = i.reference_number where i.user_id = :user_id AND p.archiving_code IS NULL group by p.archiving_code order by p.recording_date DESC');
+        $query = DB::connection()->prepare('select count(t.id) as tickets, i.id, i.user_id, i.reference_number, i.amount, i.created from ticket t left join invoice i on t.invoice_id = i.id left join payment p on p.reference_number = i.reference_number where i.user_id = :user_id AND p.archiving_code IS NULL group by i.id order by p.recording_date DESC');
         $query->execute(array('user_id' => $user->getId()));
         $result = $query->fetchAll();
         $invoices = array();
