@@ -44,14 +44,15 @@ ENGINE=InnoDB
 ;
 
 CREATE TABLE `invoice` (
-	`id` INT(11) NOT NULL AUTO_INCREMENT,
-	`user_id` INT(11) NOT NULL,
-	`reference_number` BIGINT(20) NOT NULL DEFAULT '0',
-	`amount` DECIMAL(5,2) NOT NULL DEFAULT '0',
-	`created` DATE NOT NULL,
-	PRIMARY KEY (`id`),
-	UNIQUE INDEX `reference_number` (`reference_number`),
-	CONSTRAINT `invoices_to_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `user_id` INT(11) NOT NULL,
+  `reference_number` BIGINT(20) NOT NULL DEFAULT '0',
+  `amount` DECIMAL(5,2) NOT NULL DEFAULT '0.00',
+  `created` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `reference_number` (`reference_number`),
+  INDEX `invoices_to_users` (`user_id`),
+  CONSTRAINT `invoices_to_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION
 )
 ENGINE=InnoDB
 ;

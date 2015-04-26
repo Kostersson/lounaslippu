@@ -5,6 +5,9 @@ namespace Tsoha;
     protected $validators;
 
     public function __construct($attributes = null){
+      if(!is_array($attributes)){
+        return;
+      }
       // Käydään assosiaatiolistan avaimet läpi
       foreach($attributes as $attribute => $value){
         // Jos avaimen niminen attribuutti on olemassa...

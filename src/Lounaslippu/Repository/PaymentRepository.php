@@ -37,4 +37,11 @@ class PaymentRepository {
         }
         return $invoices;
     }
+
+    public function nextInvoiceId(){
+        $query = DB::connection()->prepare('SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME=\'invoice\'');
+        $query->execute(array());
+        $result = $query->fetch();
+        return $result[0];
+    }
 }

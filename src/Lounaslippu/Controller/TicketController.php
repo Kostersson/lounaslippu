@@ -43,14 +43,21 @@ class TicketController {
 
         return View::make('tickets.html', array(
             "payments" => $payments,
-            "unpaid_invoices" => $unpaidInvoices
+            "unpaid_invoices" => $unpaidInvoices,
+            "max_tickets" => $this->ticketService->getAmountOfAvailableTickets($this->authenticationService->getUser())
         ));
     }
 
-    public function showOrderPageAction(){
+    public function showOrderPageAction($message = array()){
         $this->authenticationService->authenticate();
         return View::make('order.html', array(
             "max_tickets" => $this->ticketService->getAmountOfAvailableTickets($this->authenticationService->getUser())
         ));
+    }
+
+    public function orderTickets(){
+        $this->authenticationService->authenticate();
+        $errors = $this->ticketService->orderTickets($this->authenticationService->getUser());
+        return $this->showOrderPageAction($errors);
     }
 }

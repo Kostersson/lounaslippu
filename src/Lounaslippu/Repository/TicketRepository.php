@@ -11,7 +11,7 @@ namespace Lounaslippu\Repository;
 use Lounaslippu\Model\User;
 use Tsoha\DB;
 
-class TicketRepository {
+class TicketRepository extends EntityRepository {
 
     public function getAmountOfOrderedTickets(User $user, \DateTime $start, \DateTime $end){
         $query = DB::connection()->prepare('select count(t.id) as amount from ticket t left join invoice i on t.invoice_id = i.id where t.user_id = :user_id and (i.created >= :start and i.created <= :end)');
@@ -21,6 +21,12 @@ class TicketRepository {
             return $result["amount"];
         }
         return null;
+    }
 
+    public function getLastTicketId(User $user){
+        $query = DB::connection()->prepare('SELECT MAX(id) FROM ticket WHERE user_id = :user_id');
+        $query->execute(array('user_id' => $user->getId()));
+        $result = $query->fetch();
+        return $result[0];
     }
 }

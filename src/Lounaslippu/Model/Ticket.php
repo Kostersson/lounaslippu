@@ -81,9 +81,9 @@ class Ticket extends BaseModel {
      */
     public function getInsertSql()
     {
-        $sql ="insert into ticket (user_id, invoice_id) values (:user_id, :invoice_id)";
+        $sql ="insert into ticket (id, user_id, invoice_id) values (:id, :user_id, :invoice_id)";
         return array( $sql => array(
-            "user_id" => $this->user_id, "invoice_id" => $this->invoice_id
+            "id" => $this->id, "user_id" => $this->user_id, "invoice_id" => $this->invoice_id
         ));
     }
 }

@@ -6,6 +6,7 @@ namespace Lounaslippu\Service;
 use Lounaslippu\Model\User;
 use Lounaslippu\Repository\AuthenticationRepository;
 use Lounaslippu\Repository\UserRepository;
+use Lounaslippu\Service\ErrorService;
 use Tsoha\Redirect;
 
 class RegistrationService
@@ -42,12 +43,12 @@ class RegistrationService
                 }
             }
             $error = array("error" => $errorMessage);
-            $this->setErrors($error);
+            ErrorService::setErrors($error);
             return;
         }
         if(!$this->validateUsername($user->getEmail())){
             $error = array("error" => "Sähköpostiosoitteellasi on jo rekisteröitynyt käyttäjä.<br />");
-            $this->setErrors($error);
+            ErrorService::setErrors($error);
             return;
         }
         $user->setPassword($this->createPassword($user->getPassword()));
@@ -55,20 +56,13 @@ class RegistrationService
         if($insert !== true){
             $message = "Käyttäjän lisäyksessä tapahtui virhe.<br />" . $insert;
                 $error = array("error" => $message);
-            $this->setErrors($error);
+            ErrorService::setErrors($error);
             return;
         }
 
         Redirect::to("/", array("success" => "Käyttäjä lisätty onnistuneesti"));
     }
-    private function setErrors($error){
-        if (isset($_SESSION["flash_message"])) {
-            $_SESSION["flash_message"] = json_decode($_SESSION["flash_message"]);
-        } else {
-            $_SESSION["flash_message"] = array();
-        }
-        $_SESSION["flash_message"] = json_encode(array_merge($_SESSION["flash_message"], $error));
-    }
+
     private function createPassword($input)
     {
         $salt = "";

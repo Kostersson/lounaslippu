@@ -9,6 +9,8 @@ services:
       class: Lounaslippu\Repository\TicketRepository
   lounaslippu.repository.payment:
       class: Lounaslippu\Repository\PaymentRepository
+  lounaslippu.repository.invoice:
+      class: Lounaslippu\Repository\InvoiceRepository
 
   lounaslippu.service.authentication:
     class: Lounaslippu\Service\AuthenticationService
@@ -23,6 +25,7 @@ services:
     class: Lounaslippu\Service\PaymentService
     arguments:
       - @lounaslippu.repository.payment
+      - @lounaslippu.repository.invoice
   lounaslippu.service.ticket:
     class: Lounaslippu\Service\TicketService
     arguments:
