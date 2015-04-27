@@ -11,9 +11,9 @@
     "slim/slim": "2.*",
     "twig/twig": "~1.5",
     "raveren/kint": "v0.9",
-    "symfony/dependency-injection": "2.6.*",
-    "symfony/yaml": "2.6.*",
-    "symfony/config": "2.6.*",
+    "symfony/dependency-injection": "2.0.*",
+    "symfony/yaml": "2.0.*",
+    "symfony/config": "2.0.*",
     "vlucas/valitron": "~1.2"
   },
   "extra": {
