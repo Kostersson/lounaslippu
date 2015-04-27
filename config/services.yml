@@ -7,10 +7,10 @@ services:
     class: Lounaslippu\Repository\UserRepository
   lounaslippu.repository.ticket:
       class: Lounaslippu\Repository\TicketRepository
-  lounaslippu.repository.payment:
-      class: Lounaslippu\Repository\PaymentRepository
   lounaslippu.repository.invoice:
       class: Lounaslippu\Repository\InvoiceRepository
+  lounaslippu.repository.payment:
+        class: Lounaslippu\Repository\PaymentRepository
 
   lounaslippu.service.authentication:
     class: Lounaslippu\Service\AuthenticationService
@@ -31,6 +31,10 @@ services:
     arguments:
       - @lounaslippu.repository.ticket
       - @lounaslippu.service.payment
+  lounaslippu.service.payment.import:
+    class: Lounaslippu\Service\PaymentImportService
+    arguments:
+      - @lounaslippu.repository.payment
 
 
   lounaslippu.controller.login:
@@ -51,6 +55,11 @@ services:
       - @lounaslippu.service.authentication
       - @lounaslippu.service.ticket
       - @lounaslippu.service.payment
+  lounaslippu.controller.payment.import:
+    class: Lounaslippu\Controller\PaymentImportController
+    arguments:
+      - @lounaslippu.service.authentication
+      - @lounaslippu.service.payment.import
 
   lounaslippu.api.controller.validator:
     class: Lounaslippu\Controller\ValidatorController

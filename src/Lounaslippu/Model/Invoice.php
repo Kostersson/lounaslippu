@@ -85,11 +85,11 @@ class Invoice extends BaseModel{
     }
 
     /**
-     * @return decimal
+     * @return float
      */
     public function getAmount()
     {
-        return $this->amount;
+        return floatval($this->amount);
     }
 
     /**

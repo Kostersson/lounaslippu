@@ -53,6 +53,14 @@ class Router
             $container->get('lounaslippu.controller.registration')->registrateUserAction();
         });
 
+        $this->slim->get('/maksut/syotto', function () use ($container){
+            $container->get('lounaslippu.controller.payment.import')->showPageAction();
+        });
+        $this->slim->post('/maksut/syotto', function () use ($container){
+            $container->get('lounaslippu.controller.payment.import')->importCsv();
+        });
+
+
         $this->slim->map('/api/validator/username', function () use ($container){
             $container->get('lounaslippu.api.controller.validator')->usernameValidation();
         })->via('GET', 'POST');

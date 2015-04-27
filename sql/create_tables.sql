@@ -58,13 +58,13 @@ ENGINE=InnoDB
 ;
 
 CREATE TABLE `payment` (
-	`archiving_code` VARCHAR(255) NOT NULL,
+	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
 	`reference_number` BIGINT(20) NOT NULL,
 	`amount` DECIMAL(5,2) NOT NULL,
 	`recording_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	`amount_left` DECIMAL(5,2) NOT NULL,
 	`date_of_payment` DATE NULL DEFAULT NULL,
-	PRIMARY KEY (`archiving_code`),
+	PRIMARY KEY (`id`),
 	INDEX `payment_to_invoice` (`reference_number`),
 	CONSTRAINT `payment_to_invoice` FOREIGN KEY (`reference_number`) REFERENCES `invoice` (`reference_number`) ON UPDATE NO ACTION ON DELETE NO ACTION
 )
@@ -110,3 +110,9 @@ CREATE TABLE `log` (
 )
 ENGINE=InnoDB
 ;
+
+CREATE TRIGGER `payment_amount_left` BEFORE INSERT ON `payment` FOR EACH ROW BEGIN
+DECLARE amount_left decimal;
+SET amount_left = (select i.amount-COALESCE(SUM(p.amount),0) as amount_left from invoice i left join payment p on p.reference_number = i.reference_number where p.reference_number = NEW.reference_number);
+SET NEW.amount_left = amount_left-NEW.amount;
+END
