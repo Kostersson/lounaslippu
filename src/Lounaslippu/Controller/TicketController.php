@@ -60,4 +60,23 @@ class TicketController {
         $errors = $this->ticketService->orderTickets($this->authenticationService->getUser());
         return $this->showOrderPageAction($errors);
     }
+
+    public function showUsedTicketFormAction($message = array()){
+        $this->authenticationService->authenticate();
+        return View::make('used_tickets.html', $message);
+    }
+
+    public function addUsedTicketAction(){
+        $this->authenticationService->authenticate();
+        $message = array();
+        if(isset($_POST["ticketNumber"]) && is_numeric($_POST["ticketNumber"])){
+            $message = $this->ticketService->addUsedTicket($_POST["ticketNumber"]);
+        }
+        else{
+            $message = "Lipun numeroa ei syötetty, tai se ei ollut oikeassa muodossa. <br />";
+            $error = array("error" => $message);
+            ErrorService::setErrors($error);
+        }
+        return $this->showUsedTicketFormAction($message);
+    }
 }

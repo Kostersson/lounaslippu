@@ -35,6 +35,12 @@ class Router
         $this->slim->post('/lounasliput/tilaus/tilaa', function () use ($container){
             $container->get('lounaslippu.controller.ticket')->orderTickets();
         });
+        $this->slim->get('/lounasliput/syotto', function () use ($container){
+            $container->get('lounaslippu.controller.ticket')->showUsedTicketFormAction();
+        });
+        $this->slim->post('/lounasliput/syotto', function () use ($container){
+            $container->get('lounaslippu.controller.ticket')->addUsedTicketAction();
+        });
 
         $this->slim->get('/sisaankirjautuminen', function () use ($container){
             $container->get('lounaslippu.controller.login')->showPageAction();

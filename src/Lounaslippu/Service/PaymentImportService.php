@@ -48,7 +48,7 @@ class PaymentImportService
             }
         }
         fclose($file);
-        $insert = $this->paymentRepository->save($payments);
+        $insert = $this->paymentRepository->insert($payments);
         if($insert !== true){
             $message = "Maksujen kirjaamisessa tapahtui virhe.<br />" . $insert;
             $error = array("error" => $message);

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+Lippujen syöttö
+{% endblock %}
+
+{% block content %}
+<h1>K&auml;ytettyjen lippujen sy&ouml;tt&auml;minen</h1>
+<div class="alert alert-dismissable alert-info">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>Viimeisin lippujen syöttö tehty <b>22.3.2015 klo 15.45</b>
+</div>
+<form action="" name="used_tickets" method="post" role="form">
+    <div class="form-group">
+        <div class="form-group">
+            <label class="control-label">Lipun numero</label>
+            <div class="controls">
+                <input type="text" class="form-control" name="ticketNumber" id="inputticketNumber" required>
+            </div>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Tallenna" name="submit">
+    </div>
+</form>
+{% endblock %}

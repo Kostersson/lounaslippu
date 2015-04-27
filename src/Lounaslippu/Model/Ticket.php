@@ -64,7 +64,7 @@ class Ticket extends BaseModel {
      */
     public function isUsed()
     {
-        return $this->used;
+        return $this->used == "TRUE" ? true : false;
     }
 
     /**
@@ -72,7 +72,23 @@ class Ticket extends BaseModel {
      */
     public function isVoid()
     {
-        return $this->void;
+        return $this->void  == "TRUE" ? true : false;
+    }
+
+    /**
+     * @param boolean $used
+     */
+    public function setUsed($used)
+    {
+        $this->used = $used ? "TRUE" : "FALSE";
+    }
+
+    /**
+     * @param boolean $void
+     */
+    public function setVoid($void)
+    {
+        $this->void = $void ? "TRUE" : "FALSE";
     }
 
     /**
@@ -84,6 +100,18 @@ class Ticket extends BaseModel {
         $sql ="insert into ticket (id, user_id, invoice_id) values (:id, :user_id, :invoice_id)";
         return array( $sql => array(
             "id" => $this->id, "user_id" => $this->user_id, "invoice_id" => $this->invoice_id
+        ));
+    }
+
+    /**
+     * Should return array("prepared sql :key" => array("key" => "value"))
+     * @return array|null
+     */
+    public function getUpdateSql()
+    {
+        $sql ="update ticket set user_id = :user_id, invoice_id = :invoice_id, used = :used, void = :void where id = :id";
+        return array( $sql => array(
+            "user_id" => $this->user_id, "invoice_id" => $this->invoice_id, "used" => $this->used,  "void" => $this->void, "id" => $this->id
         ));
     }
 }

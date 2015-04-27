@@ -155,5 +155,16 @@ class User extends BaseModel {
         ));
     }
 
+    /**
+     * Should return array("prepared sql :key" => array("key" => "value"))
+     * @return array|null
+     */
+    public function getUpdateSql()
+    {
+        $sql ="update users set name = :name, email = :email, password = :password where id = :id";
+        return array( $sql => array(
+            "name" => $this->name, "email" => $this->email, "password" => $this->password, "id" => $this->id
+        ));
+    }
 
 }

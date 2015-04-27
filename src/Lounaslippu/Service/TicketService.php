@@ -68,7 +68,7 @@ class TicketService {
             $lastId++;
             $tickets[] = new Ticket(array("id" => $lastId, "user_id" => $user->getId(), "invoice_id" => $invoice->getId()));
         }
-        $insert = $this->ticketRepository->save($tickets);
+        $insert = $this->ticketRepository->insert($tickets);
         if($insert !== true){
             $message = "Lippujen kirjaamisessa tapahtui virhe.<br />" . $insert;
             $error = array("error" => $message);
@@ -76,6 +76,22 @@ class TicketService {
             return;
         }
         Redirect::to("/lounasliput", array("success" => "Liput tilattu onnistuneesti. Alla näet avoimet laskusi."));
+    }
+
+    public function addUsedTicket($ticketNUmber){
+        $ticket = $this->ticketRepository->getTicketById($ticketNUmber);
+        if($ticket === null){
+            ErrorService::setErrors($error = array("error" => "Syöttämääsi lippua ei löytynyt."));
+            return;
+        }
+        if($ticket->isUsed() || $ticket->isVoid()){
+            $reason = $ticket->isUsed() ? "käytetty" : "mitätöity";
+            ErrorService::setErrors($error = array("error" => "Syöttämääsi lippu oli " . $reason . "."));
+            return;
+        }
+        $ticket->setUsed(true);
+        $this->ticketRepository->update(array($ticket));
+        return array("success" => "Lippu syötetty onnistuneesti.");
     }
 
 }

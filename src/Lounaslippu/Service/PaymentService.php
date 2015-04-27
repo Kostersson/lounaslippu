@@ -65,7 +65,7 @@ class PaymentService
         $invoice->setUserId($user);
         $errors = $invoice->errors();
         if (empty($errors)) {
-            $this->invoiceRepository->save(array($invoice));
+            $this->invoiceRepository->insert(array($invoice));
             return $invoice;
         }
         return $invoice;

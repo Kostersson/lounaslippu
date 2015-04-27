@@ -121,4 +121,16 @@ class Payment extends BaseModel{
             "reference_number" => $this->reference_number, "amount" => $this->amount, "amount_left" => $this->amount_left, "date_of_payment" => $this->date_of_payment
         ));
     }
+
+    /**
+     * Should return array("prepared sql :key" => array("key" => "value"))
+     * @return array|null
+     */
+    public function getUpdateSql()
+    {
+        $sql ="update payment set reference_number = :reference_number, amount = :amount, amount_left = :amount_left, date_of_payment = :date_of_payment where id = :id";
+        return array( $sql => array(
+            "reference_number" => $this->reference_number, "amount" => $this->amount, "amount_left" => $this->amount_left,  "date_of_payment" => $this->date_of_payment, "id" => $this->id
+        ));
+    }
 }

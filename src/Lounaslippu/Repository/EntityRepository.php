@@ -6,13 +6,24 @@ use Tsoha\DB;
 
 class EntityRepository {
 
-    public function save(array $models){
+    public function insert(array $models){
+       return $this->save($models);
+    }
+    public function update(array $models){
+        return $this->save($models, true);
+    }
+
+    private function save(array $models, $update = false){
         /** @var BaseModel $model */
         $connection = DB::connection();
         $connection->beginTransaction();
         foreach($models as $model){
-            $data = $model->getInsertSql();
-
+            if($update){
+                $data = $model->getUpdateSql();
+            }
+            else {
+                $data = $model->getInsertSql();
+            }
             $query = $connection->prepare(key($data));
             if(!$query->execute(current($data))){
                 $error = $query->errorInfo();

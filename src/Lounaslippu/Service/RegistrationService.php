@@ -52,7 +52,7 @@ class RegistrationService
             return;
         }
         $user->setPassword($this->createPassword($user->getPassword()));
-        $insert = $this->userRepository->save(array($user));
+        $insert = $this->userRepository->insert(array($user));
         if($insert !== true){
             $message = "Käyttäjän lisäyksessä tapahtui virhe.<br />" . $insert;
                 $error = array("error" => $message);

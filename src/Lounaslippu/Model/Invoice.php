@@ -164,4 +164,16 @@ class Invoice extends BaseModel{
             "reference_number" => $this->reference_number, "amount" => $this->amount, "user_id" => $this->user_id
         ));
     }
+
+    /**
+     * Should return array("prepared sql :key" => array("key" => "value"))
+     * @return array|null
+     */
+    public function getUpdateSql()
+    {
+        $sql ="update invoice set reference_number = :reference_number, amount = :amount, user_id = :user_id WHERE id = :id";
+        return array( $sql => array(
+            "reference_number" => $this->reference_number, "amount" => $this->amount, "user_id" => $this->user_id, "id" => $this->id
+        ));
+    }
 }

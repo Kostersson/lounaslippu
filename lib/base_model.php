@@ -35,4 +35,10 @@ namespace Tsoha;
      */
     public abstract function getInsertSql();
 
+    /**
+     * Should return array("prepared sql :key" => array("key" => "value"))
+     * @return array|null
+     */
+    public abstract function getUpdateSql();
+
   }
