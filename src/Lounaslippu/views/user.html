@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}
+Omat tiedot
+{% endblock %}
+
+{% block content %}
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <h1>Omat tiedot</h1>
+
+        <form action="{{base_path}}/omat/tiedot" name="own_data" method="post" data-toggle="validator" novalidate="true" role="form">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Nimi</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" name="name" id="inputName" value="{{user.name}}" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">S&auml;hk&ouml;postiosoite</label>
+                        <div class="controls">
+                            <input type="email" class="form-control" name="email" id="inputEmail" value="{{user.email}}" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Salasana</label>
+                        <div class="controls">
+                            <input type="password" class="form-control" name="password1" id="inputPassword" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Salasana uudelleen</label>
+                        <div class="controls">
+                            <input type="password" class="form-control" name="password2" id="inputPasswordConfirm"  data-match="#inputPassword" data-match-error="Salasanat eivät täsmää" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Tallenna</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

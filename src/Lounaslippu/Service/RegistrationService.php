@@ -63,7 +63,7 @@ class RegistrationService
         Redirect::to("/", array("success" => "Käyttäjä lisätty onnistuneesti"));
     }
 
-    private function createPassword($input)
+    public function createPassword($input)
     {
         $salt = "";
         $salt_chars = array_merge(range('A', 'Z'), range('a', 'z'), range(0, 9));

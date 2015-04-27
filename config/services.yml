@@ -35,6 +35,12 @@ services:
     class: Lounaslippu\Service\PaymentImportService
     arguments:
       - @lounaslippu.repository.payment
+  lounaslippu.service.user:
+    class: Lounaslippu\Service\UserService
+    arguments:
+      - @lounaslippu.service.registration
+      - @lounaslippu.repository.user
+
 
 
   lounaslippu.controller.login:
@@ -60,6 +66,11 @@ services:
     arguments:
       - @lounaslippu.service.authentication
       - @lounaslippu.service.payment.import
+  lounaslippu.controller.user:
+    class: Lounaslippu\Controller\UserController
+    arguments:
+      - @lounaslippu.service.authentication
+      - @lounaslippu.service.user
 
   lounaslippu.api.controller.validator:
     class: Lounaslippu\Controller\ValidatorController

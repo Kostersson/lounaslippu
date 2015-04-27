@@ -66,6 +66,12 @@ class Router
             $container->get('lounaslippu.controller.payment.import')->importCsv();
         });
 
+        $this->slim->get('/omat/tiedot', function () use ($container){
+            $container->get('lounaslippu.controller.user')->showPageAction();
+        });
+        $this->slim->post('/omat/tiedot', function () use ($container){
+            $container->get('lounaslippu.controller.user')->updateUserAction();
+        });
 
         $this->slim->map('/api/validator/username', function () use ($container){
             $container->get('lounaslippu.api.controller.validator')->usernameValidation();

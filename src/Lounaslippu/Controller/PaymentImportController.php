@@ -8,8 +8,14 @@ use Lounaslippu\Service\PaymentImportService;
 use Tsoha\View;
 
 class PaymentImportController {
+    /**
+     * @var AuthenticationService
+     */
     private $authenticationService;
 
+    /**
+     * @var PaymentImportService
+     */
     private $paymentImportService;
 
     /**
@@ -23,6 +29,9 @@ class PaymentImportController {
         $this->paymentImportService = $paymentImportService;
     }
 
+    /**
+     *
+     */
     public function showPageAction(){
         $this->authenticationService->authenticate();
 
@@ -31,6 +40,9 @@ class PaymentImportController {
         ));
     }
 
+    /**
+     *
+     */
     public function importCsv(){
         $this->authenticationService->authenticate();
         $this->paymentImportService->importCsv();
