@@ -37,7 +37,7 @@ class UserService {
 
     public function updateUser(User$user){
 
-        $user->setPassword($this->registrationService->createPassword($_POST["password1"]));
+        $user->setPassword($this->registrationService->createPassword($_POST["password"]));
         $user->setName($_POST["name"]);
         if($this->userRepository->getEmailsExceptUser($user, $_POST["email"]) !== false){
             $error = array("error" => "Sähköpostiosoitteellasi on jo rekisteröitynyt käyttäjä.<br />");

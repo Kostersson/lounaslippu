@@ -133,9 +133,9 @@ class User extends BaseModel {
     protected function addUserValidator()
     {
         $v = new Validator($_POST);
-        $v->rule('required', ['name', 'email', 'password1', 'password2'])->message('Kaikki kentät ovat pakollisia');
+        $v->rule('required', ['name', 'email', 'password', 'password2'])->message('Kaikki kentät ovat pakollisia');
         $v->rule('email', 'email')->message("Sähköposti ei ole oikean mallinen");
-        $v->rule('equals', 'password1', 'password2')->message("Salasanat eivät täsmää");
+        $v->rule('equals', 'password', 'password2')->message("Salasanat eivät täsmää");
         if($v->validate()) {
             return array();
         } else {
