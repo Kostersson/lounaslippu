@@ -24,7 +24,7 @@ class AuthenticationService
         Redirect::to("/sisaankirjautuminen");
     }
 
-    public function signIn($username, $password)
+    public function signIn($username, $password, $redirect = true)
     {
         if ($this->validateSession()) {
             Redirect::to("/");
@@ -33,7 +33,10 @@ class AuthenticationService
         if ($user instanceof User) {
             $_SESSION["user"] = $user;
             $_SESSION["timestamp"] = time();
-            Redirect::to("/");
+            if($redirect){
+                Redirect::to("/");
+            }
+            return;
         }
         $message = array("error" => "Kirjautuminen epäonnistui");
         Redirect::to("/sisaankirjautuminen", $message);
@@ -60,12 +63,15 @@ class AuthenticationService
         return false;
     }
 
-    public function logout()
+    public function logout($redirect = true)
     {
         unset($_SESSION["user"]);
         unset($_SESSION["timestamp"]);
         $message = array("success" => "Sinut on nyt kirjattu ulos järjestelmästä");
-        Redirect::to("/", $message);
+        if($redirect){
+            Redirect::to("/", $message);
+        }
+        return;
     }
 
     /**
