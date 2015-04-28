@@ -7,8 +7,8 @@ HY-TKTL Aineopintojen harjoitustyö: Tietokantasovellus
 
 [Dokumentaatio.pdf](doc/dokumentaatio.pdf)
 
-[Linkki sovellukseen]()
-Sovellus ei pyöri tällähetkellä missään
+[Linkki sovellukseen](http://lounaslippu.jelastic.planeetta.net/)
+
 
 ### Sovelluksen näkymiä
 [Sisäänkirjautuminen](http://ppkostam.users.cs.helsinki.fi/lounaslippu/testinakymat/index.html)
