@@ -10,7 +10,6 @@ HY-TKTL Aineopintojen harjoitustyö: Tietokantasovellus
 [Linkki sovellukseen](http://lounaslippu.jelastic.planeetta.net/)
 
 käyttäjä: pekka@testi.com salasana:pekka
-Myös rekisteröityminen onnistuu
 
 
 ### Sovelluksen näkymiä
