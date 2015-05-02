@@ -70,9 +70,11 @@
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="41.353515625" x="67.64324218750005" y="4.0">invoice</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="48.103515625" modelName="custom" textColor="#000000" visible="true" width="122.060546875" x="2.0" y="30.701171875">&lt;&lt;key&gt;&gt;-id:int
+          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="77.505859375" modelName="custom" textColor="#000000" visible="true" width="122.060546875" x="2.0" y="30.701171875">&lt;&lt;key&gt;&gt;-id:int
+&lt;&lt;fkey&gt;&gt;-user:int
 -reference_number:int
--amount:int<y:LabelModel>
+-amount:decimal
+-created:datetime<y:LabelModel>
               <y:ErdAttributesNodeLabelModel/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -88,14 +90,16 @@
     <node id="n3">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="116.88" width="195.84000000000003" x="377.44000000000017" y="148.06"/>
+          <y:Geometry height="124.88" width="195.84000000000003" x="377.44000000000017" y="148.06"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="50.025390625" x="72.90730468750002" y="4.0">payment</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="62.8046875" modelName="custom" textColor="#000000" visible="true" width="172.099609375" x="2.0" y="30.701171875">&lt;&lt;key&gt;&gt;-archiving_code:String
+          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="92.20703125" modelName="custom" textColor="#000000" visible="true" width="172.099609375" x="2.0" y="30.701171875">&lt;&lt;key&gt;&gt;-id:int
 &lt;&lt;fkey&gt;&gt;-reference_number:int
--amount:int
--recording_date:Date<y:LabelModel>
+-amount:decimal
+-recording_date:Timestamp
+-amount_left:decimal
+-date_of_payment:Date<y:LabelModel>
               <y:ErdAttributesNodeLabelModel/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -311,7 +315,6 @@
       </data>
     </edge>
     <edge id="e7" source="n8" target="n1">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
@@ -337,7 +340,6 @@
       </data>
     </edge>
     <edge id="e8" source="n8" target="n0">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">

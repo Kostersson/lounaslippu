@@ -6,6 +6,9 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class Router
 {
+    /**
+     * @var Slim
+     */
     private $slim;
 
 
@@ -20,6 +23,10 @@ class Router
         $this->slim->run();
     }
 
+    /**
+     * Generates routes
+     * @param $container
+     */
     private function generate($container)
     {
         $this->slim->get('/', function () use ($container){

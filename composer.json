@@ -15,12 +15,5 @@
     "symfony/yaml": "2.6.*",
     "symfony/config": "2.6.*",
     "vlucas/valitron": "~1.2"
-  },
-  "extra": {
-    "heroku": {
-      "compile": [
-        "chmod -R 755 /assets"
-      ]
-    }
   }
 }

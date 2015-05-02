@@ -40,5 +40,5 @@ if(session_id() == '') {
     session_start();
 }
 
-$routes = $container->get('slim');
-$router = new Lounaslippu\Router($routes, $container);
+$slim = $container->get('slim');
+$router = new Lounaslippu\Router($slim, $container);
