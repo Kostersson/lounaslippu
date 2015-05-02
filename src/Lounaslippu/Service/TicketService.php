@@ -4,6 +4,7 @@ namespace Lounaslippu\Service;
 
 
 use Lounaslippu\Model\Invoice;
+use Lounaslippu\Model\Payment;
 use Lounaslippu\Model\Ticket;
 use Lounaslippu\Model\User;
 use Lounaslippu\Service\PaymentService;
@@ -138,6 +139,19 @@ class TicketService
         ErrorService::setErrors($error = array("success" => "Tilaus peruttu onnistuneesti."));
         return;
 
+    }
+
+    public function getDownloadableTickets($paymentId){
+        /** @var Payment $payment */
+        $payment = $this->paymentService->getPayment($paymentId);
+        if($payment->getAmountLeft() !== "0.00"){
+            ErrorService::setErrors($error = array("error" => "Tilausta ei ole maksettu loppuun."));
+            Redirect::to("/lounasliput");
+        }
+        /** @var Invoice $invoice */
+        $invoice = $this->paymentService->getInvoiceByPayment($payment);
+        $tickets = $this->ticketRepository->getTicketsByInvoice($invoice);
+        return $tickets;
     }
 
 }

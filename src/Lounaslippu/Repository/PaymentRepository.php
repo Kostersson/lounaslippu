@@ -29,7 +29,7 @@ class PaymentRepository extends EntityRepository
      */
     public function getUsersPayments(User $user)
     {
-        $query = DB::connection()->prepare('select count(t.id) as tickets, i.id as invoice_id, p.date_of_payment, i.reference_number, i.amount as invoice_amount, p.amount as paid, p.amount_left, p.id, p.recording_date from payment p left join invoice i on p.reference_number = i.reference_number right join ticket t on t.invoice_id = i.id where i.user_id = :user_id group by p.id order by p.date_of_payment DESC');
+        $query = DB::connection()->prepare('select count(t.id) as tickets, i.id as invoice_id, p.id as payment_id, p.date_of_payment, i.reference_number, i.amount as invoice_amount, p.amount as paid, p.amount_left, p.id, p.recording_date from payment p left join invoice i on p.reference_number = i.reference_number right join ticket t on t.invoice_id = i.id where i.user_id = :user_id group by p.id order by p.date_of_payment DESC');
         $query->execute(array('user_id' => $user->getId()));
         $result = $query->fetchAll();
         $payments = array();
@@ -92,6 +92,18 @@ class PaymentRepository extends EntityRepository
             return false;
         }
         return $result[0];
+    }
+
+    /**
+     * @param $paymentId
+     * @return Payment
+     */
+    public function getPayment($paymentId){
+        $query = DB::connection()->prepare('SELECT * FROM payment WHERE id = :id');
+        $query->execute(array('id' => $paymentId));
+        $result = $query->fetch();
+        $payment = new Payment($result);
+        return $payment;
     }
 
 }

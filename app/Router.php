@@ -36,6 +36,9 @@ class Router
         $this->slim->get('/lounasliput', function () use ($container){
             $container->get('lounaslippu.controller.ticket')->showPageAction();
         });
+        $this->slim->get('/lounasliput/:id/lataa', function ($id) use ($container){
+            $container->get('lounaslippu.controller.ticket')->downloadTicketsAction($id);
+        });
         $this->slim->get('/lounasliput/peruuta/tilaus/:reference_number', function ($reference_number) use ($container){
             $container->get('lounaslippu.controller.ticket')->deleteOrderAction($reference_number);
         });

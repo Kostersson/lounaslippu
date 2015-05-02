@@ -4,6 +4,7 @@ namespace Lounaslippu\Service;
 
 
 use Lounaslippu\Model\Invoice;
+use Lounaslippu\Model\Payment;
 use Lounaslippu\Model\User;
 use Lounaslippu\Repository\InvoiceRepository;
 use Lounaslippu\Repository\PaymentRepository;
@@ -97,5 +98,21 @@ class PaymentService
         }
         $checksum = (10 - ($sum % 10)) % 10;
         return $base . $checksum;
+    }
+
+    /**
+     * @param $paymentId
+     * @return Payment
+     */
+    public function getPayment($paymentId){
+        return $this->paymentRepository->getPayment($paymentId);
+    }
+
+    /**
+     * @param Payment $payment
+     * @return Invoice
+     */
+    public function getInvoiceByPayment(Payment $payment){
+        return $this->invoiceRepository->getInvoiceByReferenceNumber($payment->getReferenceNumber());
     }
 }

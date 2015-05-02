@@ -8,6 +8,7 @@
 
 namespace Lounaslippu\Repository;
 
+use Lounaslippu\Model\Invoice;
 use Lounaslippu\Model\Ticket;
 use Lounaslippu\Model\User;
 use Tsoha\DB;
@@ -62,5 +63,24 @@ class TicketRepository extends EntityRepository
             $ticket = new Ticket($result);
         }
         return $ticket;
+    }
+
+    /**
+     * @param Invoice $invoice
+     * @param bool $void
+     * @param bool $used
+     * @return array
+     */
+    public function getTicketsByInvoice(Invoice $invoice, $void = false, $used = false){
+        $void = $void ? "TRUE" : "FALSE";
+        $used = $used ? "TRUE" : "FALSE";
+        $query = DB::connection()->prepare('SELECT * FROM ticket WHERE invoice_id = :invoice_id AND void = :void AND used = :used');
+        $query->execute(array('invoice_id' => $invoice->getId(), 'void' => $void, 'used' => $used));
+        $result = $query->fetchAll();
+        $tickets = array();
+        foreach ($result as $row) {
+            $tickets[] = new Ticket($row);
+        }
+        return $tickets;
     }
 }

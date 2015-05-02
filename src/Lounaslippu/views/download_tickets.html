@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}
+Lounasliput
+{% endblock %}
+
+{% block additional_css %}
+<link href="{{base_path}}/assets/css/ticket.css" rel="stylesheet" type="text/css" media="all">
+{% endblock %}
+{% block menu %}{% endblock %}
+{% block content %}
+
+
+    <div class="container">
+    {% for ticket in tickets %}
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-5 col-lg-4">
+            <div class="box">
+                <div class="box-icon">
+                    <span class="fa fa-4x fa-cutlery"></span>
+                </div>
+                <div class="info">
+                    <h4 class="text-center">Lounaslippu</h4>
+                    <h4 class="text-center barcode">*{{ticket.Id}}*</h4>
+                    <h4 class="text-center">{{ticket.Id}}</h4>
+                </div>
+            </div>
+        </div>
+
+
+    {% endfor %}
+    </div>
+{% endblock %}

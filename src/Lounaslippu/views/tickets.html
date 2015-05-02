@@ -34,7 +34,7 @@ Lounasliput
             <td>{{ invoice.tickets }}kpl</td>
             <td>{{ invoice.amount }}€</td>
             <td>{{ invoice.referenceNumber }}</td>
-            <td> <a href="lounasliput/peruuta/tilaus/{{ invoice.referenceNumber }}">Peruuta</a></td>
+            <td> <a href="{{base_path}}/lounasliput/peruuta/tilaus/{{ invoice.referenceNumber }}">Peruuta</a></td>
         </tr>
     {% endfor %}
 
@@ -65,7 +65,7 @@ Lounasliput
             <td>{{ payment.paid }}€</td>
             <td>{{ payment.amountLeft }}€</td>
             <td>{% if payment.amountLeft == 0 %}
-                <a href="lounasliput/{{ payment.invoiceId }}/lataa">Lataa</a>
+                <a href="{{base_path}}/lounasliput/{{ payment.PaymentId }}/lataa">Lataa</a>
                 {% endif %}
             </td>
         </tr>

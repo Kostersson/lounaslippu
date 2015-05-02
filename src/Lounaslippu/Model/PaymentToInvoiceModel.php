@@ -7,12 +7,21 @@ namespace Lounaslippu\Model;
  * Class PaymentToInvoiceModel
  * @package Lounaslippu\Model
  */
+/**
+ * Class PaymentToInvoiceModel
+ * @package Lounaslippu\Model
+ */
 class PaymentToInvoiceModel
 {
     /**
      * @var int
      */
     private $invoice_id;
+
+    /**
+     * @var bigint
+     */
+    private $payment_id;
 
     /**
      * @var \Date
@@ -62,6 +71,14 @@ class PaymentToInvoiceModel
                 $this->{$attribute} = $value;
             }
         }
+    }
+
+    /**
+     * @return bigint
+     */
+    public function getPaymentId()
+    {
+        return $this->payment_id;
     }
 
     /**

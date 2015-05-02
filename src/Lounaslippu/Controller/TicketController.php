@@ -113,4 +113,11 @@ class TicketController
         $message = $this->ticketService->deleteOrder($reference_number, $this->authenticationService->getUser());
         return $this->showPageAction($message);
     }
+
+    public function downloadTicketsAction($paymentId){
+        $this->authenticationService->authenticate();
+        return View::make('download_tickets.html', array('tickets' => $this->ticketService->getDownloadableTickets($paymentId)));
+
+
+    }
 }
