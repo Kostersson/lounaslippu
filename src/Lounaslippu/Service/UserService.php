@@ -86,7 +86,7 @@ class UserService
         }
         // logout and sign in to update user in session
         $this->authenticationService->logout(false);
-        $this->authenticationService->signIn($user->getEmail(), $_POST["password1"], false);
+        $this->authenticationService->signIn($user->getEmail(), $_POST["password"], false);
 
         Redirect::to("/", array("success" => "Tiedot päivitetty."));
 
