@@ -55,6 +55,14 @@ class PaymentService
     }
 
     /**
+     * @param $reference_number
+     * @return Invoice
+     */
+    public function getUnpaidInvoice($reference_number){
+        return $this->paymentRepository->getUnpaidInvoice($reference_number);
+    }
+
+    /**
      * @param User $user
      * @param $amount
      * @return Invoice

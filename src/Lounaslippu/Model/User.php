@@ -5,6 +5,7 @@ namespace Lounaslippu\Model;
 
 use Tsoha\BaseModel;
 use Valitron\Validator;
+use Lounaslippu\Model\Exception\CannotDeleteException;
 
 /**
  * Class User
@@ -180,6 +181,16 @@ class User extends BaseModel
         return array($sql => array(
             "name" => $this->name, "email" => $this->email, "password" => $this->password, "id" => $this->id
         ));
+    }
+
+    /**
+     * Should return array("prepared sql :key" => array("key" => "value"))
+     * @return array|null
+     * @throws CannotDeleteException
+     */
+    public function getDeleteSql()
+    {
+        throw new CannotDeleteException("Käyttäjää ei voi poistaa");
     }
 
 }

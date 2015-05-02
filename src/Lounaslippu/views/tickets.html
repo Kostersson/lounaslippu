@@ -23,6 +23,7 @@ Lounasliput
         <th>M&auml;&auml;r&auml;</th>
         <th>Hinta</th>
         <th>Viitenumero</th>
+        <th>Peruuta tilaus</th>
     </tr>
     </thead>
     <tbody>
@@ -33,6 +34,7 @@ Lounasliput
             <td>{{ invoice.tickets }}kpl</td>
             <td>{{ invoice.amount }}€</td>
             <td>{{ invoice.referenceNumber }}</td>
+            <td> <a href="lounasliput/peruuta/tilaus/{{ invoice.referenceNumber }}">Peruuta</a></td>
         </tr>
     {% endfor %}
 

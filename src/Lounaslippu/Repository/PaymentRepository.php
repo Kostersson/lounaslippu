@@ -56,6 +56,19 @@ class PaymentRepository extends EntityRepository
     }
 
     /**
+     * @param int $reference_number
+     * @return Invoice|null
+     */
+    public function getUnpaidInvoice($reference_number)
+    {
+        $query = DB::connection()->prepare('select count(t.id) as tickets, i.id, i.user_id, i.reference_number, i.amount, i.created from ticket t left join invoice i on t.invoice_id = i.id left join payment p on p.reference_number = i.reference_number where i.reference_number = :reference_number AND p.id IS NULL group by i.id order by p.date_of_payment DESC');
+        $query->execute(array('reference_number' => $reference_number));
+        $result = $query->fetch();
+        $invoice = new Invoice($result);
+        return $invoice;
+    }
+
+    /**
      * @return mixed
      */
     public function nextInvoiceId()

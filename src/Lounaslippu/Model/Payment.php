@@ -9,6 +9,7 @@
 namespace Lounaslippu\Model;
 
 
+use Lounaslippu\Model\Exception\CannotDeleteException;
 use Tsoha\BaseModel;
 
 /**
@@ -141,5 +142,16 @@ class Payment extends BaseModel
         return array($sql => array(
             "reference_number" => $this->reference_number, "amount" => $this->amount, "amount_left" => $this->amount_left, "date_of_payment" => $this->date_of_payment, "id" => $this->id
         ));
+    }
+
+
+    /**
+     * Should return array("prepared sql :key" => array("key" => "value"))
+     * @return array|null
+     * @throws CannotDeleteException
+     */
+    public function getDeleteSql()
+    {
+        throw new CannotDeleteException("Maksuja ei voi poistaa järjestelmästä");
     }
 }

@@ -59,9 +59,8 @@ class TicketController
 
     /**
      * Tickets order page
-     * @param array $message
      */
-    public function showOrderPageAction($message = array())
+    public function showOrderPageAction()
     {
         $this->authenticationService->authenticate();
         return View::make('order.html', array(
@@ -104,5 +103,14 @@ class TicketController
             ErrorService::setErrors($error);
         }
         return $this->showUsedTicketFormAction($message);
+    }
+
+    /**
+     * @param $reference_number
+     */
+    public function deleteOrderAction($reference_number){
+        $this->authenticationService->authenticate();
+        $message = $this->ticketService->deleteOrder($reference_number, $this->authenticationService->getUser());
+        return $this->showPageAction($message);
     }
 }

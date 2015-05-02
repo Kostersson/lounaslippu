@@ -119,4 +119,25 @@ class TicketService
         return array("success" => "Lippu syötetty onnistuneesti.");
     }
 
+    /**
+     * @param $reference_number
+     * @param User $user
+     */
+    public function deleteOrder($reference_number, User $user){
+        /** @var Invoice $invoice */
+        $invoice = $this->paymentService->getUnpaidInvoice($reference_number);
+        if($invoice->getId() === null){
+            ErrorService::setErrors($error = array("error" => "Tilausta ei löytynyt tai sille on jo kirjattu maksusuorituksia."));
+            return;
+        }
+        if($invoice->getUserId() !== $user->getId()){
+            ErrorService::setErrors($error = array("error" => "Kyseistä tilausta ei löytynyt käyttäjätunnuksellesi."));
+            return;
+        }
+        $this->ticketRepository->delete(array($invoice));
+        ErrorService::setErrors($error = array("success" => "Tilaus peruttu onnistuneesti."));
+        return;
+
+    }
+
 }

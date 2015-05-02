@@ -2,6 +2,7 @@
 
 namespace Lounaslippu\Repository;
 
+use Tsoha\BaseModel;
 use Tsoha\DB;
 
 /**
@@ -26,24 +27,40 @@ class EntityRepository
      */
     public function update(array $models)
     {
-        return $this->save($models, true);
+        return $this->save($models, "update");
     }
 
     /**
      * @param array $models
-     * @param bool $update
      * @return bool
      */
-    private function save(array $models, $update = false)
+    public function delete(array $models)
     {
-        /** @var BaseModel $model */
+        return $this->save($models, "delete");
+    }
+
+    /**
+     * @param array $models
+     * @param null $method
+     * @return bool
+     */
+    private function save(array $models, $method = null)
+    {
+
         $connection = DB::connection();
         $connection->beginTransaction();
+        /** @var BaseModel $model */
         foreach ($models as $model) {
-            if ($update) {
-                $data = $model->getUpdateSql();
-            } else {
-                $data = $model->getInsertSql();
+            switch($method) {
+                case "update":
+                    $data = $model->getUpdateSql();
+                    break;
+                case "delete":
+                    $data = $model->getDeleteSql();
+                    break;
+                default:
+                    $data = $model->getInsertSql();
+                    break;
             }
             $query = $connection->prepare(key($data));
             if (!$query->execute(current($data))) {

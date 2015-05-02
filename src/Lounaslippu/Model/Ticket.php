@@ -2,6 +2,7 @@
 
 namespace Lounaslippu\Model;
 
+use Lounaslippu\Model\Exception\CannotDeleteException;
 use Tsoha\BaseModel;
 
 /**
@@ -122,5 +123,15 @@ class Ticket extends BaseModel
         return array($sql => array(
             "user_id" => $this->user_id, "invoice_id" => $this->invoice_id, "used" => $this->used, "void" => $this->void, "id" => $this->id
         ));
+    }
+
+    /**
+     * Should return array("prepared sql :key" => array("key" => "value"))
+     * @return array|null
+     * @throws CannotDeleteException
+     */
+    public function getDeleteSql()
+    {
+        throw new CannotDeleteException("Yksittäisiä lippuja ei voi poistaa. Poista liput maksamattoman tilauksen kautta.");
     }
 }

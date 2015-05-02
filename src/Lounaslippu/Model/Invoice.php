@@ -192,4 +192,16 @@ class Invoice extends BaseModel
             "reference_number" => $this->reference_number, "amount" => $this->amount, "user_id" => $this->user_id, "id" => $this->id
         ));
     }
+
+    /**
+     * Should return array("prepared sql :key" => array("key" => "value"))
+     * @return array|null
+     */
+    public function getDeleteSql()
+    {
+        $sql = "DELETE FROM invoice WHERE  id = :id";
+        return array($sql => array(
+            "id" => $this->id
+        ));
+    }
 }
