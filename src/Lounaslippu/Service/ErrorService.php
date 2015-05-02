@@ -3,9 +3,18 @@
 namespace Lounaslippu\Service;
 
 
-class ErrorService {
+/**
+ * Class ErrorService
+ * @package Lounaslippu\Service
+ */
+class ErrorService
+{
 
-    public static function setErrors($error){
+    /**
+     * @param array $error
+     */
+    public static function setErrors($error)
+    {
         if (isset($_SESSION["flash_message"])) {
             $_SESSION["flash_message"] = json_decode($_SESSION["flash_message"]);
         } else {

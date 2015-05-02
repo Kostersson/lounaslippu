@@ -8,6 +8,10 @@ use Lounaslippu\Model\User;
 use Lounaslippu\Repository\InvoiceRepository;
 use Lounaslippu\Repository\PaymentRepository;
 
+/**
+ * Class PaymentService
+ * @package Lounaslippu\Service
+ */
 class PaymentService
 {
 

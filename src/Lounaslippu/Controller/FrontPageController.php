@@ -6,7 +6,15 @@ namespace Lounaslippu\Controller;
 use Lounaslippu\Service\AuthenticationService;
 use Tsoha\View;
 
-class FrontPageController {
+/**
+ * Class FrontPageController
+ * @package Lounaslippu\Controller
+ */
+class FrontPageController
+{
+    /**
+     * @var AuthenticationService
+     */
     private $authenticationService;
 
     /**
@@ -18,7 +26,11 @@ class FrontPageController {
         $this->authenticationService = $authenticationService;
     }
 
-    public function showPageAction(){
+    /**
+     * Generates dummy homepage
+     */
+    public function showPageAction()
+    {
         $this->authenticationService->authenticate();
         return View::make('home.html');
     }

@@ -5,16 +5,30 @@ use Lounaslippu\Model\User;
 use Lounaslippu\Repository\AuthenticationRepository;
 use Tsoha\Redirect;
 
+/**
+ * Class AuthenticationService
+ * @package Lounaslippu\Service
+ */
 class AuthenticationService
 {
 
+    /**
+     * @var AuthenticationRepository
+     */
     private $authenticationRepository;
 
+    /**
+     * @param AuthenticationRepository $authenticationRepository
+     */
     function __construct(AuthenticationRepository $authenticationRepository)
     {
         $this->authenticationRepository = $authenticationRepository;
     }
 
+    /**
+     * Authenticates user
+     * if authentication fails, redirects to login page
+     */
     public function authenticate()
     {
         if ($this->validateSession()) {
@@ -24,6 +38,11 @@ class AuthenticationService
         Redirect::to("/sisaankirjautuminen");
     }
 
+    /**
+     * @param $username
+     * @param $password
+     * @param bool $redirect
+     */
     public function signIn($username, $password, $redirect = true)
     {
         if ($this->validateSession()) {
@@ -33,7 +52,7 @@ class AuthenticationService
         if ($user instanceof User) {
             $_SESSION["user"] = $user;
             $_SESSION["timestamp"] = time();
-            if($redirect){
+            if ($redirect) {
                 Redirect::to("/");
             }
             return;
@@ -42,6 +61,9 @@ class AuthenticationService
         Redirect::to("/sisaankirjautuminen", $message);
     }
 
+    /**
+     * @return bool
+     */
     private function validateSession()
     {
         if (!isset($_SESSION["user"]) || !($_SESSION["user"] instanceof User)) {
@@ -53,6 +75,9 @@ class AuthenticationService
         return true;
     }
 
+    /**
+     * @return bool
+     */
     private function sessionExpired()
     {
         $diff = (time() - $_SESSION["timestamp"]) / 60;
@@ -63,12 +88,15 @@ class AuthenticationService
         return false;
     }
 
+    /**
+     * @param bool $redirect
+     */
     public function logout($redirect = true)
     {
         unset($_SESSION["user"]);
         unset($_SESSION["timestamp"]);
         $message = array("success" => "Sinut on nyt kirjattu ulos järjestelmästä");
-        if($redirect){
+        if ($redirect) {
             Redirect::to("/", $message);
         }
         return;

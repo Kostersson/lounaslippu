@@ -13,7 +13,12 @@ use Lounaslippu\Service\AuthenticationService;
 use Lounaslippu\Service\UserService;
 use Tsoha\View;
 
-class UserController {
+/**
+ * Class UserController
+ * @package Lounaslippu\Controller
+ */
+class UserController
+{
     /**
      * @var AuthenticationService
      */
@@ -37,7 +42,11 @@ class UserController {
         $this->userService = $userService;
     }
 
-    public function showPageAction(){
+    /**
+     * Show user personal data
+     */
+    public function showPageAction()
+    {
         $this->authenticationService->authenticate();
 
         return View::make('user.html', array(
@@ -45,7 +54,11 @@ class UserController {
         ));
     }
 
-    public function updateUserAction(){
+    /**
+     * Updates users personal data
+     */
+    public function updateUserAction()
+    {
         $this->authenticationService->authenticate();
         $this->userService->updateUser($this->authenticationService->getUser());
     }

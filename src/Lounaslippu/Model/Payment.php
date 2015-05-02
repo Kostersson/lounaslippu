@@ -11,7 +11,12 @@ namespace Lounaslippu\Model;
 
 use Tsoha\BaseModel;
 
-class Payment extends BaseModel{
+/**
+ * Class Payment
+ * @package Lounaslippu\Model
+ */
+class Payment extends BaseModel
+{
     /**
      * @var bigint
      */
@@ -42,7 +47,11 @@ class Payment extends BaseModel{
      */
     protected $date_of_payment;
 
-    public function __construct($attributes){
+    /**
+     * @param array $attributes
+     */
+    public function __construct($attributes)
+    {
         parent::__construct($attributes);
     }
 
@@ -116,8 +125,8 @@ class Payment extends BaseModel{
      */
     public function getInsertSql()
     {
-        $sql ="insert into payment (reference_number, amount, amount_left, date_of_payment) values (:reference_number, :amount, :amount_left, :date_of_payment)";
-        return array( $sql => array(
+        $sql = "insert into payment (reference_number, amount, amount_left, date_of_payment) values (:reference_number, :amount, :amount_left, :date_of_payment)";
+        return array($sql => array(
             "reference_number" => $this->reference_number, "amount" => $this->amount, "amount_left" => $this->amount_left, "date_of_payment" => $this->date_of_payment
         ));
     }
@@ -128,9 +137,9 @@ class Payment extends BaseModel{
      */
     public function getUpdateSql()
     {
-        $sql ="update payment set reference_number = :reference_number, amount = :amount, amount_left = :amount_left, date_of_payment = :date_of_payment where id = :id";
-        return array( $sql => array(
-            "reference_number" => $this->reference_number, "amount" => $this->amount, "amount_left" => $this->amount_left,  "date_of_payment" => $this->date_of_payment, "id" => $this->id
+        $sql = "update payment set reference_number = :reference_number, amount = :amount, amount_left = :amount_left, date_of_payment = :date_of_payment where id = :id";
+        return array($sql => array(
+            "reference_number" => $this->reference_number, "amount" => $this->amount, "amount_left" => $this->amount_left, "date_of_payment" => $this->date_of_payment, "id" => $this->id
         ));
     }
 }

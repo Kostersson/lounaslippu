@@ -9,11 +9,21 @@ use Lounaslippu\Repository\UserRepository;
 use Lounaslippu\Service\ErrorService;
 use Tsoha\Redirect;
 
+/**
+ * Class RegistrationService
+ * @package Lounaslippu\Service
+ */
 class RegistrationService
 {
 
+    /**
+     * @var AuthenticationRepository
+     */
     private $authenticationRepository;
 
+    /**
+     * @var UserRepository
+     */
     private $userRepository;
 
     /**
@@ -27,6 +37,9 @@ class RegistrationService
         $this->userRepository = $userRepository;
     }
 
+    /**
+     * Registrates new user
+     */
     public function registrateNewUser()
     {
         $user = new User($_POST);
@@ -46,16 +59,16 @@ class RegistrationService
             ErrorService::setErrors($error);
             return;
         }
-        if(!$this->validateUsername($user->getEmail())){
+        if (!$this->validateUsername($user->getEmail())) {
             $error = array("error" => "Sähköpostiosoitteellasi on jo rekisteröitynyt käyttäjä.<br />");
             ErrorService::setErrors($error);
             return;
         }
         $user->setPassword($this->createPassword($user->getPassword()));
         $insert = $this->userRepository->insert(array($user));
-        if($insert !== true){
+        if ($insert !== true) {
             $message = "Käyttäjän lisäyksessä tapahtui virhe.<br />" . $insert;
-                $error = array("error" => $message);
+            $error = array("error" => $message);
             ErrorService::setErrors($error);
             return;
         }
@@ -63,6 +76,10 @@ class RegistrationService
         Redirect::to("/", array("success" => "Käyttäjä lisätty onnistuneesti"));
     }
 
+    /**
+     * @param $input
+     * @return string
+     */
     public function createPassword($input)
     {
         $salt = "";
@@ -73,6 +90,10 @@ class RegistrationService
         return crypt($input, sprintf('$2a$%02d$', CRYPT_ROUNDS) . $salt);
     }
 
+    /**
+     * @param $username
+     * @return bool
+     */
     public function validateUsername($username)
     {
         $users = $this->authenticationRepository->getUsernamesByEmail($username);

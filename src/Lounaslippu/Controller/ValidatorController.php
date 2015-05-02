@@ -12,7 +12,12 @@ namespace Lounaslippu\Controller;
 use Lounaslippu\Service\RegistrationService;
 use Slim\Slim;
 
-class ValidatorController {
+/**
+ * Class ValidatorController
+ * @package Lounaslippu\Controller
+ */
+class ValidatorController
+{
 
     /**
      * @var Slim
@@ -35,10 +40,13 @@ class ValidatorController {
         $this->registrationService = $registrationService;
     }
 
+    /**
+     * Validates username
+     */
     public function usernameValidation()
     {
         if (isset($_GET["email"])) {
-            if(!$this->registrationService->validateUsername($_GET["email"])){
+            if (!$this->registrationService->validateUsername($_GET["email"])) {
                 $this->slim->response()->status(400);
                 return;
             }

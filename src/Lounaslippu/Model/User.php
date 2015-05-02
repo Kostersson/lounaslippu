@@ -6,7 +6,12 @@ namespace Lounaslippu\Model;
 use Tsoha\BaseModel;
 use Valitron\Validator;
 
-class User extends BaseModel {
+/**
+ * Class User
+ * @package Lounaslippu\Model
+ */
+class User extends BaseModel
+{
 
     /**
      * @var int
@@ -38,12 +43,20 @@ class User extends BaseModel {
      */
     protected $password;
 
-    public function __construct($attributes){
+    /**
+     * @param array $attributes
+     */
+    public function __construct($attributes)
+    {
         parent::__construct($attributes);
         $this->addValidators();
     }
 
-    private function addValidators(){
+    /**
+     * set call_user_function
+     */
+    private function addValidators()
+    {
         $this->validators[] = "addUserValidator";
     }
 
@@ -129,17 +142,19 @@ class User extends BaseModel {
     }
 
 
-
+    /**
+     * @return array
+     */
     protected function addUserValidator()
     {
         $v = new Validator($_POST);
         $v->rule('required', ['name', 'email', 'password', 'password2'])->message('Kaikki kentät ovat pakollisia');
         $v->rule('email', 'email')->message("Sähköposti ei ole oikean mallinen");
         $v->rule('equals', 'password', 'password2')->message("Salasanat eivät täsmää");
-        if($v->validate()) {
+        if ($v->validate()) {
             return array();
         } else {
-           return $v->errors();
+            return $v->errors();
         }
     }
 
@@ -149,9 +164,9 @@ class User extends BaseModel {
      */
     public function getInsertSql()
     {
-        $sql ="insert into users (name, email, password) values (:name, :email, :password)";
-        return array( $sql => array(
-         "name" => $this->name, "email" => $this->email, "password" => $this->password
+        $sql = "insert into users (name, email, password) values (:name, :email, :password)";
+        return array($sql => array(
+            "name" => $this->name, "email" => $this->email, "password" => $this->password
         ));
     }
 
@@ -161,8 +176,8 @@ class User extends BaseModel {
      */
     public function getUpdateSql()
     {
-        $sql ="update users set name = :name, email = :email, password = :password where id = :id";
-        return array( $sql => array(
+        $sql = "update users set name = :name, email = :email, password = :password where id = :id";
+        return array($sql => array(
             "name" => $this->name, "email" => $this->email, "password" => $this->password, "id" => $this->id
         ));
     }

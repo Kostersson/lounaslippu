@@ -13,6 +13,10 @@ use Lounaslippu\Model\Payment;
 use Lounaslippu\Repository\PaymentRepository;
 use Tsoha\Redirect;
 
+/**
+ * Class PaymentImportService
+ * @package Lounaslippu\Service
+ */
 class PaymentImportService
 {
     /**
@@ -30,6 +34,9 @@ class PaymentImportService
         $this->paymentRepository = $paymentRepository;
     }
 
+    /**
+     * Imports bank actions from CSV
+     */
     public function importCsv()
     {
         $file = fopen($_FILES['csvFile']['tmp_name'], "r");
@@ -49,7 +56,7 @@ class PaymentImportService
         }
         fclose($file);
         $insert = $this->paymentRepository->insert($payments);
-        if($insert !== true){
+        if ($insert !== true) {
             $message = "Maksujen kirjaamisessa tapahtui virhe.<br />" . $insert;
             $error = array("error" => $message);
             ErrorService::setErrors($error);
@@ -59,6 +66,10 @@ class PaymentImportService
 
     }
 
+    /**
+     * @param $str
+     * @return float
+     */
     private function makeFloat($str)
     {
         if (strstr($str, ",")) {

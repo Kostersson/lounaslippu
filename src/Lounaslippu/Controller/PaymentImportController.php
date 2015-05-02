@@ -7,7 +7,12 @@ use Lounaslippu\Service\AuthenticationService;
 use Lounaslippu\Service\PaymentImportService;
 use Tsoha\View;
 
-class PaymentImportController {
+/**
+ * Class PaymentImportController
+ * @package Lounaslippu\Controller
+ */
+class PaymentImportController
+{
     /**
      * @var AuthenticationService
      */
@@ -30,20 +35,20 @@ class PaymentImportController {
     }
 
     /**
-     *
+     * Generates page
      */
-    public function showPageAction(){
+    public function showPageAction()
+    {
         $this->authenticationService->authenticate();
 
-        return View::make('payment_upload.html', array(
-
-        ));
+        return View::make('payment_upload.html', array());
     }
 
     /**
-     *
+     * Imports CSV-file
      */
-    public function importCsv(){
+    public function importCsv()
+    {
         $this->authenticationService->authenticate();
         $this->paymentImportService->importCsv();
     }

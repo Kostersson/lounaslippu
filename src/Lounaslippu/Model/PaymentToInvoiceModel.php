@@ -3,6 +3,10 @@
 namespace Lounaslippu\Model;
 
 
+/**
+ * Class PaymentToInvoiceModel
+ * @package Lounaslippu\Model
+ */
 class PaymentToInvoiceModel
 {
     /**
@@ -45,6 +49,9 @@ class PaymentToInvoiceModel
      */
     private $recording_date;
 
+    /**
+     * @param array $attributes
+     */
     public function __construct($attributes = null)
     {
         // Käydään assosiaatiolistan avaimet läpi

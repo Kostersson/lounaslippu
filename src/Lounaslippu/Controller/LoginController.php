@@ -5,8 +5,16 @@ use Lounaslippu\Service\AuthenticationService;
 use Tsoha\View;
 
 
-class LoginController {
+/**
+ * Class LoginController
+ * @package Lounaslippu\Controller
+ */
+class LoginController
+{
 
+    /**
+     * @var AuthenticationService
+     */
     private $authenticationService;
 
     /**
@@ -17,15 +25,27 @@ class LoginController {
         $this->authenticationService = $authenticationService;
     }
 
-    public function showPageAction(){
+    /**
+     * Generates login page
+     */
+    public function showPageAction()
+    {
         return View::make('login.html');
     }
 
-    public function loginAction(){
+    /**
+     * User login
+     */
+    public function loginAction()
+    {
         $this->authenticationService->signIn($_POST["email"], $_POST["password"]);
     }
 
-    public function logoutAction(){
+    /**
+     * Logout
+     */
+    public function logoutAction()
+    {
         $this->authenticationService->logout();
     }
 }

@@ -5,8 +5,16 @@ use Lounaslippu\Service\RegistrationService;
 use Tsoha\View;
 
 
-  class RegistrationController{
+/**
+ * Class RegistrationController
+ * @package Lounaslippu\Controller
+ */
+class RegistrationController
+{
 
+    /**
+     * @var RegistrationService
+     */
     private $registrationService;
 
     /**
@@ -15,19 +23,26 @@ use Tsoha\View;
      */
     public function __construct(RegistrationService $registrationService)
     {
-      $this->registrationService = $registrationService;
+        $this->registrationService = $registrationService;
     }
 
 
-    public static function showPageAction(){
-      // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
-   	  View::make('registration.html');
+    /**
+     * Generates registration form
+     */
+    public static function showPageAction()
+    {
+        View::make('registration.html');
     }
 
-    public function registrateUserAction(){
-      $errors = $this->registrationService->registrateNewUser();
-      return View::make('registration.html', $errors);
+    /**
+     * Register new user
+     */
+    public function registrateUserAction()
+    {
+        $errors = $this->registrationService->registrateNewUser();
+        return View::make('registration.html', $errors);
     }
 
 
-  }
+}

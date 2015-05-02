@@ -4,7 +4,12 @@ namespace Lounaslippu\Model;
 
 use Tsoha\BaseModel;
 
-class Ticket extends BaseModel {
+/**
+ * Class Ticket
+ * @package Lounaslippu\Model
+ */
+class Ticket extends BaseModel
+{
 
     /**
      * @var int
@@ -31,7 +36,11 @@ class Ticket extends BaseModel {
      */
     protected $void;
 
-    public function __construct($attributes){
+    /**
+     * @param array $attributes
+     */
+    public function __construct($attributes)
+    {
         parent::__construct($attributes);
     }
 
@@ -72,7 +81,7 @@ class Ticket extends BaseModel {
      */
     public function isVoid()
     {
-        return $this->void  == "TRUE" ? true : false;
+        return $this->void == "TRUE" ? true : false;
     }
 
     /**
@@ -97,8 +106,8 @@ class Ticket extends BaseModel {
      */
     public function getInsertSql()
     {
-        $sql ="insert into ticket (id, user_id, invoice_id) values (:id, :user_id, :invoice_id)";
-        return array( $sql => array(
+        $sql = "insert into ticket (id, user_id, invoice_id) values (:id, :user_id, :invoice_id)";
+        return array($sql => array(
             "id" => $this->id, "user_id" => $this->user_id, "invoice_id" => $this->invoice_id
         ));
     }
@@ -109,9 +118,9 @@ class Ticket extends BaseModel {
      */
     public function getUpdateSql()
     {
-        $sql ="update ticket set user_id = :user_id, invoice_id = :invoice_id, used = :used, void = :void where id = :id";
-        return array( $sql => array(
-            "user_id" => $this->user_id, "invoice_id" => $this->invoice_id, "used" => $this->used,  "void" => $this->void, "id" => $this->id
+        $sql = "update ticket set user_id = :user_id, invoice_id = :invoice_id, used = :used, void = :void where id = :id";
+        return array($sql => array(
+            "user_id" => $this->user_id, "invoice_id" => $this->invoice_id, "used" => $this->used, "void" => $this->void, "id" => $this->id
         ));
     }
 }

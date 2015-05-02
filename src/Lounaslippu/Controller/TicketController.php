@@ -7,7 +7,12 @@ use Lounaslippu\Service\PaymentService;
 use Lounaslippu\Service\TicketService;
 use Tsoha\View;
 
-class TicketController {
+/**
+ * Class TicketController
+ * @package Lounaslippu\Controller
+ */
+class TicketController
+{
 
     /**
      * @var AuthenticationService
@@ -36,7 +41,11 @@ class TicketController {
         $this->paymentService = $paymentService;
     }
 
-    public function showPageAction(){
+    /**
+     * Tickets page
+     */
+    public function showPageAction()
+    {
         $this->authenticationService->authenticate();
         $payments = $this->paymentService->getUsersPayments($this->authenticationService->getUser());
         $unpaidInvoices = $this->paymentService->getUsersUnpaidInvoices($this->authenticationService->getUser());
@@ -48,31 +57,48 @@ class TicketController {
         ));
     }
 
-    public function showOrderPageAction($message = array()){
+    /**
+     * Tickets order page
+     * @param array $message
+     */
+    public function showOrderPageAction($message = array())
+    {
         $this->authenticationService->authenticate();
         return View::make('order.html', array(
             "max_tickets" => $this->ticketService->getAmountOfAvailableTickets($this->authenticationService->getUser())
         ));
     }
 
-    public function orderTickets(){
+    /**
+     * Order tickets
+     */
+    public function orderTickets()
+    {
         $this->authenticationService->authenticate();
         $errors = $this->ticketService->orderTickets($this->authenticationService->getUser());
         return $this->showOrderPageAction($errors);
     }
 
-    public function showUsedTicketFormAction($message = array()){
+    /**
+     * Used tickets
+     * @param array $message
+     */
+    public function showUsedTicketFormAction($message = array())
+    {
         $this->authenticationService->authenticate();
         return View::make('used_tickets.html', $message);
     }
 
-    public function addUsedTicketAction(){
+    /**
+     * Marks ticket as used
+     */
+    public function addUsedTicketAction()
+    {
         $this->authenticationService->authenticate();
         $message = array();
-        if(isset($_POST["ticketNumber"]) && is_numeric($_POST["ticketNumber"])){
+        if (isset($_POST["ticketNumber"]) && is_numeric($_POST["ticketNumber"])) {
             $message = $this->ticketService->addUsedTicket($_POST["ticketNumber"]);
-        }
-        else{
+        } else {
             $message = "Lipun numeroa ei syötetty, tai se ei ollut oikeassa muodossa. <br />";
             $error = array("error" => $message);
             ErrorService::setErrors($error);

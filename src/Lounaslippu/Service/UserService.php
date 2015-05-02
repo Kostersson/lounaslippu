@@ -13,16 +13,28 @@ use Lounaslippu\Model\User;
 use Lounaslippu\Repository\UserRepository;
 use Tsoha\Redirect;
 
-class UserService {
+/**
+ * Class UserService
+ * @package Lounaslippu\Service
+ */
+class UserService
+{
 
     /**
      * @var RegistrationService
      */
     private $registrationService;
 
+    /**
+     * @var UserRepository
+     */
     private $userRepository;
 
+    /**
+     * @var AuthenticationService
+     */
     private $authenticationService;
+
     /**
      * UserService constructor.
      * @param RegistrationService $registrationService
@@ -35,11 +47,15 @@ class UserService {
     }
 
 
-    public function updateUser(User$user){
+    /**
+     * @param User $user
+     */
+    public function updateUser(User $user)
+    {
 
         $user->setPassword($this->registrationService->createPassword($_POST["password"]));
         $user->setName($_POST["name"]);
-        if($this->userRepository->getEmailsExceptUser($user, $_POST["email"]) !== false){
+        if ($this->userRepository->getEmailsExceptUser($user, $_POST["email"]) !== false) {
             $error = array("error" => "Sähköpostiosoitteellasi on jo rekisteröitynyt käyttäjä.<br />");
             ErrorService::setErrors($error);
             return;
@@ -62,7 +78,7 @@ class UserService {
             return;
         }
         $insert = $this->userRepository->update(array($user));
-        if($insert !== true){
+        if ($insert !== true) {
             $message = "Käyttäjän päivityksessä tapahtui virhe.<br />" . $insert;
             $error = array("error" => $message);
             ErrorService::setErrors($error);
