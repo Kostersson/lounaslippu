@@ -111,7 +111,8 @@ CREATE TABLE `log` (
 ENGINE=InnoDB
 ;
 
-CREATE TRIGGER `payment_amount_left` BEFORE INSERT ON `payment` FOR EACH ROW BEGIN
+CREATE TRIGGER `payment_amount_left` BEFORE INSERT ON `payment`
+ FOR EACH ROW BEGIN
 DECLARE amount_left decimal;
 SET amount_left = (select i.amount-COALESCE(SUM(p.amount),0) as amount_left from invoice i left join payment p on p.reference_number = i.reference_number where p.reference_number = NEW.reference_number);
 SET NEW.amount_left = amount_left-NEW.amount;
