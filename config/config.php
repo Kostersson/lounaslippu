@@ -1,5 +1,5 @@
 <?php
-define("SESSION_TTL", 15);
+define("SESSION_TTL", 15); // minutes
 define("CRYPT_ROUNDS", 15);
 define("MAX_AMOUNT_OF_TICKETS_PER_SEMESTER", 100);
 define("REFERENCE_NUMBER_BASE", 1000);
