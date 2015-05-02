@@ -27,21 +27,21 @@ Nykyään liput käydään erikseen ostamassa toimistosta tiettyinä kellonaikoi
 Projektin tarkoituksena on helpottaa lounaslippujen tilaamista.
 
 ### Projekti sisältää seuraavia ominaisuuksia
-
-- Käyttäjän rekisteröityminen
- - *Vain rekisteröitynyt käyttäjä voi tilata lippuja*
-- Käyttäjien muokkaus ja poistaminen
- - *Käyttäjien roolitus*
+* [X] Käyttäjän rekisteröityminen
+ * [X] *Vain rekisteröitynyt käyttäjä voi tilata lippuja*
+* [X] Käyttäjien muokkaus
+* [ ] Käyttäjien poistaminen
+ * [ ] *Käyttäjien roolitus*
     - Normaali käyttäjä
     - Rahastonhoitaja
     - Ylläpitäjä
     - Pääylläpitäjä
-- Lippujen ja laskujen generointi
- - *Lippujen numeroilla seurataan lippujen käyttöä*
- - *Käyttäjällä oikeus ostaa vain tietyn verran lippuja*
- - *Laskun generointi ostettujen lippujen perusteella*
-   - Lasku tunnistetaan viitenumerolla
-- Maksujen tuonti pankkipalvelusta CSV:nä
- - *Kun liput maksettu, ne voi tulostaa järjestelmästä*
-- Käytettyjen lippujen kirjaaminen järjestelmään
-- Loki palvelussa tehdyistä operaatioista
+* [X] Lippujen ja laskujen generointi
+ * [X] *Lippujen numeroilla seurataan lippujen käyttöä*
+ * [X] *Käyttäjällä oikeus ostaa vain tietyn verran lippuja*
+ * [X] *Laskun generointi ostettujen lippujen perusteella*
+   * [X] Lasku tunnistetaan viitenumerolla
+* [X] Maksujen tuonti pankkipalvelusta CSV:nä
+ * [X] *Kun liput maksettu, ne voi tulostaa järjestelmästä*
+* [X] Käytettyjen lippujen kirjaaminen järjestelmään
+* [ ] Loki palvelussa tehdyistä operaatioista
