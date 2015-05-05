@@ -4,6 +4,7 @@ HY-TKTL Aineopintojen harjoitustyö: Tietokantasovellus
 
 ## Yleisiä linkkejä
 
+[![Code Climate](https://codeclimate.com/github/Kostersson/lounaslippu/badges/gpa.svg)](https://codeclimate.com/github/Kostersson/lounaslippu)
 
 [Dokumentaatio.pdf](doc/dokumentaatio.pdf)
 
